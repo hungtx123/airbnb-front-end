@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   private message = '';
 
   constructor(private tokenStorage: TokenStorageService,
-              private roleService: RoleService,
               private role: RoleService) {
   }
 
@@ -23,13 +22,13 @@ export class AppComponent implements OnInit {
 
 // console.log(value);
   ngOnInit() {
-    this.role.getRole().subscribe(next => {
-      console.log(this.tokenStorage);
-      this.tokenStorage.saveAuthorities(next.name);
-      this.user = next.id;
-      this.role.user = next.id;
-      this.message = 'Lay duoc role';
-    }, error => this.message = 'khong lay dk role');
+    // this.role.getRole().subscribe(next => {
+    //   this.tokenStorage.saveAuthorities(next.name);
+    //   this.user = next.id;
+    //   this.role.user = next.id;
+    //   this.message = 'Lay duoc role';
+    //   console.log(this.role.getRole());
+    // }, error => this.message = 'khong lay dk role');
   }
 }
 
