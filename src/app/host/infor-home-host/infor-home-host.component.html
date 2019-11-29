@@ -16,6 +16,7 @@
         <p>Gia: {{item.price}}</p>
       </div>
       <form class="form-group" [formGroup]="statusHomeForm" (ngSubmit)="onSubmit()">
+        <h3 *ngIf="message">{{message}}</h3>
         <label class="col">
           Chọn mục đích sử dụng:
           <select  formControlName="status" class="form-control">

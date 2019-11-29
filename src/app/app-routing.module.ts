@@ -18,6 +18,10 @@ import {HeadComponent} from './head/head.component';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'list-home',
     component: ListHomeComponent
   },

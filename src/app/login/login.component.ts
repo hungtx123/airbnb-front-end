@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
           this.roleService.getRole().subscribe(next2 => {
               console.log(next2);
               this.user.emit(next2.id);
+              this.roleService.user = next2.id;
               switch (next2.id) {
                 case 1:
                   this.router.navigate(['user']);
