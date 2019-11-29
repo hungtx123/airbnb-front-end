@@ -47,9 +47,8 @@ export class OrderHomeUserComponent implements OnInit {
         });
       const {value} = this.orderForm;
       console.log(value);
-      this.userService.orderHome(value)
-        .subscribe(next => {
-          console.log(next);
+      this.userService.orderHome(value).pipe()
+        .subscribe(() => {
           this.message = 'Cap nhat thanh cong';
         }, error => this.message = 'Cap nhat khong thành công' ) ;
     }

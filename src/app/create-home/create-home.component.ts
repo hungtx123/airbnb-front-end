@@ -57,9 +57,10 @@ export class CreateHomeComponent implements OnInit {
           value.category = { name: 'House'};
           break;
       }
-      this.homeService.createHome(value)
+      this.homeService.createHome(value).pipe()
         .subscribe(next => {
           this.isCreatFailed = false;
+          this.message = 'Tạo thành công';
           console.log('Thanh cong');
         }, error => {
           this.message = 'Tạo không thành công';
