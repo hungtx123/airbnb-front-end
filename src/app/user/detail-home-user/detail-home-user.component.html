@@ -1,18 +1,18 @@
-<h3>Day là iterm</h3>
+<h3></h3>
 <div class="container">
   <div class="media">
     <div>
       <div class="media-left media-middle">
-        <a [routerLink]="['/user',item.id]"><img class="media-object" src="{{item.imageUrls}}" width="300" height="300"></a>
+        <a [routerLink]="['/user',item.id]"><img class="media-object" src="{{item.imageUrls}}" width="400" height="400"></a>
       </div>
       <div class="media-body">
         <h4 class="media-heading">{{item.houseName}}</h4>
-        <p>{{item.area}}</p>
-        <p>{{item.address}}</p>
-        <p>{{item.bathroomNumber}}</p>
-        <p>{{item.bedroomNumber}}</p>
-        <p>{{item.category.name}}</p>
-        <p>{{item.price}}</p>
+        <p>Diện tích: {{item.area}}</p>
+        <p>Địa chỉ: {{item.address}}</p>
+        <p>Số phòng tắm: {{item.bathroomNumber}}</p>
+        <p>Số phòng ngủ: {{item.bedroomNumber}}</p>
+        <p>Loại phòng: {{item.category.name}}</p>
+        <p>Giá 1 đêm: {{item.price}}</p>
       </div>
       <a [routerLink]="['order']" class="btn btn-info">Đặt nhà</a>
     </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {IHome} from '../../interface/i-home';
+// import {IHome} from '../../interface/i-home';
 import {HostService} from '../../service/host.service';
-import {error} from 'util';
+// import {error} from 'util';
 import {ProfileService} from '../../service/profile.service';
 import {HomeHost} from '../../interface/home-host';
 

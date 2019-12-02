@@ -1,1 +1,26 @@
-<p>trangchu works!</p>
+<div class="container">
+<!--  <div class="row">-->
+<!--    <div class="col-md-6 col-lg-12">-->
+      <h1>Chào mừng đến với HTTP!</h1>
+      <div>Đặt chỗ ở, homestay, cho thuê xe, trải nghiệm và nhiều hơn nữa trên HTTP</div>
+      <ng-container *ngIf="tokenStorage.getAuthorities() == null">
+        <p><a routerLink="/login">Đăng nhập</a> hoặc <a routerLink="/register">Đăng kí</a> để trải nghiệm! </p>
+      </ng-container>
+<!--      <ng-container *ngIf="tokenStorage.getAuthorities() != null">-->
+        <app-list-home></app-list-home>
+<!--      </ng-container>-->
+<!--    </div>-->
+<!--    <div class="col-md-6 ml-auto">-->
+      <div class="image-container">
+       <div class="bg" style="background-image: url(https://statics.vntrip.vn/data-v2/hotels/42889/img_max/42889_1567053898_img_3258.jpg)">
+<!--         <div class="img-fluid" style="background-image: url(https://znews-photo.zadn.vn/w1024/Uploaded/mdf_nkxdwz/2019_06_10/hangrubi_0510.jpg)">-->
+
+        </div>
+    </div>
+  </div>
+<!--</div>-->
+<!--</div>-->
+
+
+
+

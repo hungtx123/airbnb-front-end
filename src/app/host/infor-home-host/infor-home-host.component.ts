@@ -55,8 +55,8 @@ export class InforHomeHostComponent implements OnInit {
       this.hostService.updateStatusHome(value)
         .subscribe(next => {
           console.log(next);
-          this.message = 'Cap nhat thanh cong';
-        }, error => this.message = 'Cap nhat khong thành công' ) ;
+          this.message = 'Cập nhật thành công';
+        }, error => this.message = 'Cập nhật không thành công' ) ;
     }
   }
 

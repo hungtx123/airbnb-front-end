@@ -55,8 +55,8 @@ export class OrderHomeUserComponent implements OnInit {
       console.log(value);
       this.userService.orderHome(value).pipe()
         .subscribe(() => {
-          this.message = 'Cap nhat thanh cong';
-        }, error => this.message = 'Cap nhat khong thành công' ) ;
+          this.message = 'Book nhà thành công ';
+        }, error => this.message = 'Book nhà không thành công' ) ;
     }
   }
 

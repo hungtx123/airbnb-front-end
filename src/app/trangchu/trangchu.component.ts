@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenStorageService} from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-trangchu',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrangchuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
   }
