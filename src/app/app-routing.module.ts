@@ -5,7 +5,6 @@ import {LoginComponent} from './login/login.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import {CreateHomeComponent} from './create-home/create-home.component';
-import {RoleComponent} from './role/role.component';
 import {HostComponent} from './host/host.component';
 import {ListHomeComponent} from './host/list-home/list-home.component';
 import {InforHomeHostComponent} from './host/infor-home-host/infor-home-host.component';
@@ -13,10 +12,15 @@ import {UserComponent} from './user/user.component';
 import {ListHomeUserComponent} from './user/list-home-user/list-home-user.component';
 import {DetailHomeUserComponent} from './user/detail-home-user/detail-home-user.component';
 import {OrderHomeUserComponent} from './user/detail-home-user/order-home-user/order-home-user.component';
-import {HeadComponent} from './head/head.component';
+import {BookListOneHomeComponent} from './host/infor-home-host/book-list-one-home/book-list-one-home.component';
+import {TrangchuComponent} from './trangchu/trangchu.component';
 
 
 const routes: Routes = [
+  {
+    path: 'trangchu',
+    component: TrangchuComponent
+  },
   {
     path: 'login',
     component: LoginComponent
@@ -35,10 +39,6 @@ const routes: Routes = [
   {
     path: 'editPassword',
     component: ChangePasswordComponent
-  },
-  {
-    path: 'role',
-    component: RoleComponent
   },
   {
     path: 'user',
@@ -72,7 +72,11 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        component: InforHomeHostComponent
+        component: InforHomeHostComponent,
+      },
+      {
+        path: ':id/booklist',
+        component: BookListOneHomeComponent,
       }
     ]
   }

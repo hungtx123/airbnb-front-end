@@ -4,6 +4,7 @@ import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {RoleService} from '../service/role.service';
 import {Router} from '@angular/router';
+import {ProfileService} from '../service/profile.service';
 
 @Component({
   selector: 'app-login',
@@ -14,23 +15,19 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoggedIn = false;
   message: string;
-  // id: number;
-  @Output()
-  user = new EventEmitter();
+  id: number;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
-    private roleService: RoleService,
+    private profileService: ProfileService,
     private  router: Router) {
   }
   ngOnInit() {
-
-    this.roleService.getRole().subscribe(next => {
-      console.log(next);
-      this.tokenStorage.saveAuthorities(next.name);
+    this.profileService.getOneAccToken().subscribe(next => {
       this.isLoggedIn = true;
-    }, error => this.isLoggedIn = false);
+      console.log('lay duoc profile');
+    }, error => this.isLoggedIn = false ) ;
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -47,24 +44,30 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveToken(next.accessToken);
           this.isLoggedIn = true;
           this.message = 'Thành công';
-          this.roleService.getRole().subscribe(next2 => {
-              console.log(next2);
-              this.user.emit(next2.id);
-              this.roleService.user = next2.id;
-              switch (next2.id) {
-                case 1:
-                  this.router.navigate(['user']);
-                  break;
-                case 2:
-                  this.router.navigate(['host']);
-                  break;
-                case 3:
-                  this.router.navigate(['admin']);
-                  break;
-              }
-            }, error => this.message = 'Khong thanh cong');
-        }, error => this.message = 'Lỗi đăng nhập, sai email hoặc mật khẩu, vui lòng nhập lại'); }
+          this.profileService.getOneAccToken().subscribe(next2 => {
+            console.log('vao day chua');
+            console.log(next2);
+            this.tokenStorage.saveAuthorities(next2.role[0].name);
+            this.tokenStorage.saveEmail(next2.email);
+            console.log(next2.role[0]);
+            switch (next2.role[0].id) {
+              case 1:
+                console.log('da vao day');
+                this.router.navigate(['user']);
+                break;
+              case 2:
+                this.router.navigate(['host']);
+                break;
+              case 3:
+                this.router.navigate(['admin']);
+                break;
+              default:
+                this.router.navigate(['user']);
+                break;
+            }
+            console.log('lay duoc profile');
+          }, error => console.log('lay duoc profile') ) ;
+        }, error => this.message = 'Lỗi đăng nhập, sai email hoặc mật khẩu, vui lòng nhập lại');
+    }
   }
-  // logout() { this.tokenStorage.signOut(); this.message = 'Bạn đã đăng xuất';
-  // }
 }

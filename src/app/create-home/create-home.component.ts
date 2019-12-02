@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {HomeService} from '../service/home.service';
 import {FileUpload} from '../interface/FileUpload';
 import {HomeImageService} from '../service/home-image.service';
+import {HostService} from '../service/host.service';
+import {TokenStorageService} from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-create-home',
@@ -17,9 +18,10 @@ export class CreateHomeComponent implements OnInit {
   message: string;
   isCreatFailed = false;
 
-  constructor(private homeService: HomeService,
+  constructor(private homeService: HostService,
               private fb: FormBuilder,
-              private uploadService: HomeImageService) {
+              private uploadService: HomeImageService,
+              private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit() {

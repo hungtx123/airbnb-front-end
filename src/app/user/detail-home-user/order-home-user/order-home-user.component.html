@@ -16,3 +16,9 @@
     <button class="btn btn-info" type="submit">BOOK</button>
   </div>
 </form>
+<div class="form-group" *ngFor="let item of listTimeOrder; index as i" >
+  <div *ngIf="item.status.id == 2">
+    Từ ngay: {{item.beginDate}} đến ngay: {{item.endDate}} đã có người book!
+  </div>
+</div>
+Bạn vui lòng book ngày khác.

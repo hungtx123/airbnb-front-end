@@ -8,12 +8,11 @@ const AUTHORITIES_KEY = 'AuthAuthorities';
   providedIn: 'root'
 })
 export class TokenStorageService {
-  private roles: string;
   constructor() { }
 
   signOut() {
-    window.sessionStorage.clear();
     window.localStorage.clear();
+    window.sessionStorage.clear();
   }
 
   public saveToken(token: string) {
@@ -22,31 +21,35 @@ export class TokenStorageService {
     window.localStorage.removeItem(TOKEN_KEY);
     window.localStorage.setItem(TOKEN_KEY, token);
   }
-
+  public getTokenCookies(): string {
+  return localStorage.getItem(TOKEN_KEY);
+  }
   public getToken(): string {
     return sessionStorage.getItem(TOKEN_KEY);
   }
-  public getTokenCookies(): string {
-  return localStorage.getItem(TOKEN_KEY);
-}
-
   public saveEmail(email: string) {
     window.sessionStorage.removeItem(EMAIL_KEY);
     window.sessionStorage.setItem(EMAIL_KEY, email);
+    window.localStorage.removeItem(EMAIL_KEY);
+    window.localStorage.setItem(EMAIL_KEY, email);
   }
-
+  public getEmailLC(): string {
+    return localStorage.getItem(EMAIL_KEY);
+  }
   public getEmail(): string {
     return sessionStorage.getItem(EMAIL_KEY);
   }
-
   public saveAuthorities(authorities: string) {
     window.sessionStorage.removeItem(AUTHORITIES_KEY);
-    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
+    window.sessionStorage.setItem(AUTHORITIES_KEY, authorities);
     window.localStorage.removeItem(AUTHORITIES_KEY);
-    window.localStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
+    window.localStorage.setItem(AUTHORITIES_KEY, authorities);
+  }
+  public getAuthoritiesLC(): string {
+    return localStorage.getItem(AUTHORITIES_KEY);
   }
 
-  public getAuthorities(): string {
-    return this.roles;
+  public getAuthorities() {
+    return sessionStorage.getItem(AUTHORITIES_KEY);
   }
 }

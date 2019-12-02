@@ -1,0 +1,20 @@
+<div class="panel panel-default" *ngFor="let item of booklist; index as i">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Đây là danh sách book của ngôi nhà ngày</div>
+  <table class="table">
+    <tr>
+      <th>Tên ngôi nhà</th>
+      <th>Tên người đặt</th>
+      <th>Số điện thoại</th>
+      <th>Checkin</th>
+      <th>Checkout</th>
+    </tr>
+    <tr>
+      <td>{{item.house.houseName}}</td>
+      <td>{{item.tenant.name}}</td>
+      <td>{{item.tenant.phone}}</td>
+      <td>{{item.checkin}}</td>
+      <td>{{item.checkout}}</td>
+    </tr>
+  </table>
+</div>

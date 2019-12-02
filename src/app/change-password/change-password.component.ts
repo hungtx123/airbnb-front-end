@@ -17,22 +17,17 @@ export class ChangePasswordComponent implements OnInit {
               private fb: FormBuilder,
               private router: Router,
               private profileService: ProfileService,
-              private tokenStorage: TokenStorageService) { }
+              private tokenStorageService: TokenStorageService) { }
 
   ngOnInit() {
     this.passForm = this.fb.group({
       password: ['', [Validators.required, Validators.minLength(6)]],
     })
     ;
-    this.token = this.tokenStorage.getToken();
   }
   editMember() {
     this.profileService.updatePass(this.passForm.value).subscribe(next => {
       this.message = 'Update success';
     });
   }
-
-  logout() { this.tokenStorage.signOut(); this.message = 'Bạn đã đăng xuất';
-  }
-
 }

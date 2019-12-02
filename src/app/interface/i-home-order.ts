@@ -1,10 +1,10 @@
+import {IHome} from './i-home';
+import {IProfile} from './i-profile';
+
 export interface IHomeOrder {
-  id: number;
-  tenant: number;
+  house: IHome;
+  tenant: IProfile;
   checkin: string;
   checkout: string;
-  numberGuest: string;
-  cost: number;
   orderDate: string;
-  status: string;
 }

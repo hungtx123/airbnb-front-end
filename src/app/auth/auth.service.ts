@@ -4,27 +4,22 @@ import {Injectable} from '@angular/core';
 import {JwtResponse} from '../interface/JwResponse';
 import {IRegister} from '../interface/i-register';
 import {IProfile} from '../interface/i-profile';
+import {LinkAPIService} from '../service/link-api.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
-class SignUpInfo {
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly API_URL = 'http://localhost:8080';
-  private loginUrl = 'http://localhost:8080/api/auth/signin';
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private url: LinkAPIService) {
   }
   attemptAuth(credentials: IRegister): Observable<JwtResponse> {
-    return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
+    return this.http.post<JwtResponse>(`${this.url.link}/api/auth/signin`, credentials, httpOptions);
   }
   update(user: IProfile): Observable<JwtResponse> {
-    return this.http.post<JwtResponse>(`${this.API_URL}/profile/edit/${user.token}`, user);
+    return this.http.post<JwtResponse>(`${this.url.link}/profile/edit/${user.token}`, user);
   }
 }

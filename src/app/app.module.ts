@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HeadComponent } from './head/head.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import {httpInterceptorProviders} from './auth/auth-interceptor';
@@ -16,7 +15,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import { HostComponent } from './host/host.component';
-import { RoleComponent } from './role/role.component';
 import { ListHomeComponent } from './host/list-home/list-home.component';
 import { UserComponent } from './user/user.component';
 import { InforHomeHostComponent } from './host/infor-home-host/infor-home-host.component';
@@ -24,18 +22,18 @@ import { ListHomeUserComponent } from './user/list-home-user/list-home-user.comp
 import { DetailHomeUserComponent } from './user/detail-home-user/detail-home-user.component';
 import { OrderHomeUserComponent } from './user/detail-home-user/order-home-user/order-home-user.component';
 import {DesktopComponent} from './desktop/desktop.component';
+import { BookListOneHomeComponent } from './host/infor-home-host/book-list-one-home/book-list-one-home.component';
+import { TrangchuComponent } from './trangchu/trangchu.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         RegisterComponent,
-        HeadComponent,
         LoginComponent,
         ProfileComponent,
         ChangePasswordComponent,
         CreateHomeComponent,
         HostComponent,
-        RoleComponent,
         ListHomeComponent,
         UserComponent,
         InforHomeHostComponent,
@@ -43,6 +41,8 @@ import {DesktopComponent} from './desktop/desktop.component';
         DetailHomeUserComponent,
         OrderHomeUserComponent,
         DesktopComponent,
+        BookListOneHomeComponent,
+        TrangchuComponent,
     ],
   imports: [
     BrowserModule,

@@ -1,25 +1,16 @@
-
-<a routerLink="/addprofile">Add Profile</a>
-<br/>
-<a routerLink="/editPassword">Change Password</a>
-<br/>
-
-<p>Đây là danh sách nhà </p>
 <div class="container">
-  <div class="media">
-    <div *ngFor="let item of output; index as i">
-      <div class="media-left media-middle">
-        <a [routerLink]="['/user',item.id]"><img class="media-object" src="{{item.imageUrls}}" height="300" width="300"></a>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">{{item.houseName}}</h4>
-        <p>{{item.area}}</p>
-        <p>{{item.address}}</p>
-        <p>{{item.bathroomNumber}}</p>
-        <p>{{item.bedroomNumber}}</p>
-        <p>{{item.category.name}}</p>
-        <p>{{item.price}}</p>
+  <div class="row" >
+    <div class="col-md-3" *ngFor="let item of output; index as i">
+      <div class="thumbnail">
+        <a [routerLink]="['/user',item.id]">
+          <img class="media-object" src="{{item.imageUrls}}" width="280" height="280">
+          <div class="caption">
+            Name: {{item.houseName}}
+          </div>
+          <p>Địa chỉ: {{item.address}}</p>
+        </a>
       </div>
     </div>
+    <div *ngIf="!output"><h3>Danh sách rỗng</h3></div>
   </div>
 </div>

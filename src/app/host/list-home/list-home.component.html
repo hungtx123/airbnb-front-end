@@ -1,26 +1,16 @@
-<a routerLink="/addprofile">Add Profile</a>
-<br/>
-<a routerLink="/editPassword">Change Password</a>
-<br/>
-<br/>
-<a routerLink="/create-home">Create home</a>
-<br/>
-<p>Đây là danh sách nhà của host </p>
 <div class="container">
-  <div class="media">
-    <div *ngFor="let item of output; index as i">
-      <div class="media-left media-middle">
-        <a [routerLink]="['/host',item.id]"><img class="media-object" src="{{item.imageUrls}}" width="280" height="280"></a>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">Name: {{item.houseName}}</h4>
-        <p>Dien tich: {{item.area}}</p>
-        <p>Dia chi: {{item.address}}</p>
-        <p>So phong tam: {{item.bathroomNumber}}</p>
-        <p>So phong ngu: {{item.bedroomNumber}}</p>
-        <p>Loai phong: {{item.category.name}}</p>
-        <p>Gia: {{item.price}}</p>
+  <div class="row" >
+    <div class="col-md-3" *ngFor="let item of output; index as i">
+      <div class="thumbnail">
+        <a [routerLink]="['/host',item.id]">
+          <img class="media-object" src="{{item.imageUrls}}" width="280" height="280">
+          <div class="caption">
+            Name: {{item.houseName}}
+          </div>
+          <p [routerLink]="['/host',item.id]">Địa chỉ: {{item.address}}</p>
+        </a>
       </div>
     </div>
+    <div *ngIf="!output"><h3>Danh sách rỗng</h3></div>
   </div>
 </div>
