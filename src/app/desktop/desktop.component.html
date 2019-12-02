@@ -19,8 +19,7 @@
           <ul class="dropdown-menu">
             <li class="rlink" *ngIf="tokenStorage.getAuthorities() === 'ROLE_HOST'"><a routerLink="/host">Đăng nhập với quyền: {{tokenStorage.getAuthoritiesLC()}}</a></li>
             <li class="rlink" *ngIf="tokenStorage.getAuthorities() === 'ROLE_USER'"><a routerLink="/user">Đăng nhập với quyền: {{tokenStorage.getAuthoritiesLC()}}</a></li>
-            <li class="rlink" ><a routerLink="/addprofile" >Cập nhật thông tin tài khoản</a></li>
-            <li class="rlink"><a routerLink="/editPassword">Đổi mật khẩu</a></li>
+
 <!--            <li role="separator" class="divider"></li>-->
 <!--            <li><a href="#">Separated link</a></li>-->
 <!--            <li role="separator" class="divider"></li>-->
@@ -43,7 +42,11 @@
             <li class="rlink" *ngIf="tokenStorage.getAuthorities() == null"><a routerLink="/login">Đăng nhập</a></li>
             <li class="rlink" *ngIf="tokenStorage.getAuthorities() == null"><a routerLink="register">Đăng ký</a></li>
             <li role="separator" class="divider"></li>
+            <ng-container *ngIf="tokenStorage.getAuthorities()!=null">
+            <li class="rlink" ><a routerLink="/addprofile" >Cập nhật thông tin tài khoản</a></li>
+            <li class="rlink"><a routerLink="/editPassword">Đổi mật khẩu</a></li>
             <li class="rlink" ><a (click)="logout()" type="submit" routerLink="/"> Logout </a></li>
+            </ng-container>
           </ul>
         </li>
       </ul>

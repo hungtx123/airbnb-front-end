@@ -63,7 +63,7 @@ body {
   padding: 14px 0;
   text-transform: uppercase;
   border-color: #59B2E6;
-  border-radius: 30px;
+  border-radius: 15px;
 }
 .btn-login:hover,
 .btn-login:focus {
@@ -103,6 +103,17 @@ body {
   color: #dc3545;
 }
 .form-control{
-  border-radius: 30px;
+  border-radius: 15px;
 
+}
+.img-circle {
+  border-radius: 50%;
+}
+.img-thumbnail {
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
 }

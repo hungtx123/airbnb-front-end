@@ -1,89 +1,127 @@
-<div class="alert alert-danger" role="alert" *ngIf="tokenStorageService.getAuthoritiesLC() != 'ROLE_HOST'">Bạn không có quyền truy cập trang này</div>
+<div class="alert alert-danger" role="alert" *ngIf="tokenStorageService.getAuthoritiesLC() != 'ROLE_HOST'">Bạn không có
+  quyền truy cập trang này
+</div>
 <div class="container" *ngIf="tokenStorageService.getAuthoritiesLC() === 'ROLE_HOST'">
-  <div *ngIf="currentFileUpload" class="progress">
-    <div class="progress-bar progress-bar-info progress-bar-striped"
-         role="progressbar" attr.aria-valuenow="{{percentage}}"
-         aria-valuemin="0" aria-valuemax="100"
-         [ngStyle]="{width:percentage+'%'}">
-      {{percentage}}%</div>
-  </div>
-  <label class="btn btn-default"> <input type="file"
-                                         (change)="selectFile($event)">
-  </label>
+<section>
+  <div class="container">
+    <div class="col-md-5 mb-5">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="text-center">
+              <a href="#" class="active" id="login-form-link">Đăng kí cho thuê nhà</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="alert alert-info" role="alert" *ngIf="message">
+                <h4 class="alert-heading">{{message}}</h4>
+              </div>
+              <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="login-form">
+                <div class="form-group">
+                  <label class="col">
+                    Tên căn nhà : </label>
+                  <input type="text" class="form-control" formControlName="houseName">
+                  <div class="invalid-feedback" role="alert"
+                       *ngIf="formGroup.get('houseName').invalid && formGroup.get('houseName').touched">
+                    Invalid tên căn nhà.
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col">
+                    Address: </label>
+                  <input type="text" class="form-control" formControlName="address">
 
-  <button class="btn btn-success" [disabled]="!selectedFiles"
-          (click)="upload()">Upload</button>
-    <div class="col-md-4">
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
-          <div class="form-group row">
-            <label class="col">
-              Tên căn nhà :
-              <input type="text" class="form-control" formControlName="houseName">
-            </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('houseName').invalid && formGroup.get('houseName').touched">
-              Invalid tên căn nhà.
+                  <div class="invalid-feedback" role="alert"
+                       *ngIf="formGroup.get('address').invalid && formGroup.get('address').touched">
+                    Invalid address!
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col">
+                    Phòng ngủ : </label>
+                  <input type="text" class="form-control" formControlName="bedroomNumber">
+
+                  <div class="invalid-feedback" role="alert"
+                       *ngIf="formGroup.get('bedroomNumber').invalid && formGroup.get('bedroomNumber').touched">
+                    Phòng ngủ !
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col">
+                    Phòng tắm : </label>
+                  <input type="text" class="form-control" formControlName="bathroomNumber">
+
+                  <div class="invalid-feedback" role="alert"
+                       *ngIf="formGroup.get('bathroomNumber').invalid && formGroup.get('bathroomNumber').touched">
+                    Invalid phong tắm !
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col">
+                    Diện tích : </label>
+                  <input type="number" class="form-control" formControlName="area">
+                  <div class="invalid-feedback" role="alert"
+                       *ngIf="formGroup.get('area').invalid && formGroup.get('area').touched">
+                    Invalid diện tích !
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col">
+                    Giá một đêm : </label>
+                  <input type="text" class="form-control" formControlName="price">
+                  <div class="invalid-feedback" role="alert"
+                       *ngIf="formGroup.get('price').invalid && formGroup.get('price').touched">
+                    Invalid giá !
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col">
+                    Loại căn hộ </label>
+                  <select formControlName="category" class="form-control">
+                    <option [defaultSelected]="1" value="1"> Hotel</option>
+                    <option value="2"> House</option>
+                    <option value="3"> Resort</option>
+                    <option value="4"> Villa</option>
+                  </select>
+                </div>
+                <div *ngIf="currentFileUpload" class="progress">
+                  <div class="progress-bar progress-bar-info progress-bar-striped"
+                       role="progressbar" attr.aria-valuenow="{{percentage}}"
+                       aria-valuemin="0" aria-valuemax="100"
+                       [ngStyle]="{width:percentage+'%'}">
+                    {{percentage}}%
+                  </div>
+                </div>
+                <label class="btn btn-default"> <input type="file"
+                                                       (change)="selectFile($event)">
+                </label>
+
+                <button class="btn btn-success" [disabled]="!selectedFiles"
+                        (click)="upload()">Upload
+                </button>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-login"
+                             value="Submit">
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
-          <div class="form-group row">
-            <label class="col">
-              Address:
-              <input type="text" class="form-control" formControlName="address" >
-            </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('address').invalid && formGroup.get('address').touched">
-              Invalid address!
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col">
-              Phòng ngủ :
-              <input type="text" class="form-control" formControlName="bedroomNumber" >
-            </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('bedroomNumber').invalid && formGroup.get('bedroomNumber').touched">
-              Phòng ngủ !
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col">
-              Phòng tắm :
-              <input type="text" class="form-control" formControlName="bathroomNumber" >
-            </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('bathroomNumber').invalid && formGroup.get('bathroomNumber').touched">
-              Invalid phong tắm !
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col">
-              Diện tích :
-              <input type="number" class="form-control" formControlName="area" >
-            </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('area').invalid && formGroup.get('area').touched">
-              Invalid diện tích !
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col">
-              Giá một đêm :
-              <input type="text" class="form-control" formControlName="price" >
-            </label>
-            <div class="alert alert-danger" role="alert" *ngIf="formGroup.get('price').invalid && formGroup.get('price').touched">
-              Invalid giá !
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col">
-              Loại căn hộ
-              <select  formControlName="category" class="form-control">
-                <option [defaultSelected]="1" value="1"> Hotel</option>
-                <option value="2"> House </option>
-                <option value="3"> Resort </option>
-                <option value="4"> Villa </option>
-              </select>
-            </label>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-info" type="submit">Submit</button>
-          </div>
-        </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 ml-auto">
+      <div class="image-container">
+        <div class="img-fluid" style="background: url(https://znews-photo.zadn.vn/w1024/Uploaded/mdf_nkxdwz/2019_06_10/hangrubi_0510.jpg)"></div>
+      </div>
     </div>
   </div>
-
+</section>
+</div>
