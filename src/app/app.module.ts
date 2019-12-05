@@ -25,6 +25,7 @@ import {DesktopComponent} from './desktop/desktop.component';
 import { BookListOneHomeComponent } from './host/infor-home-host/book-list-one-home/book-list-one-home.component';
 import { TrangchuComponent } from './trangchu/trangchu.component';
 import { ListOrderUserComponent } from './user/list-order-user/list-order-user.component';
+import { IncomeMonthComponent } from './host/infor-home-host/income-month/income-month.component';
 
 @NgModule({
     declarations: [
@@ -45,6 +46,7 @@ import { ListOrderUserComponent } from './user/list-order-user/list-order-user.c
         BookListOneHomeComponent,
         TrangchuComponent,
         ListOrderUserComponent,
+        IncomeMonthComponent,
     ],
   imports: [
     BrowserModule,

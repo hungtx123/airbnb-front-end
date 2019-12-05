@@ -41,4 +41,7 @@ export class HostService {
   setCancel(houseId: number): Observable<JwtResponse> {
     return this.http.post<JwtResponse>(`${this.url.link}/api/order/delete/${houseId}`, houseId);
   }
+  getIncomePerMonth(houseId: number): Observable<JwtResponse> {
+    return this.http.post<JwtResponse>(`${this.url.link}/api/host/income/${houseId}`, houseId);
+  }
 }
