@@ -15,9 +15,14 @@ import {OrderHomeUserComponent} from './user/detail-home-user/order-home-user/or
 import {BookListOneHomeComponent} from './host/infor-home-host/book-list-one-home/book-list-one-home.component';
 import {TrangchuComponent} from './trangchu/trangchu.component';
 import {ListOrderUserComponent} from './user/list-order-user/list-order-user.component';
+import {MapComponent} from './map/map.component';
 
 
 const routes: Routes = [
+  {
+    path: 'map',
+    component: MapComponent
+  },
   {
     path: 'trangchu',
     component: TrangchuComponent
