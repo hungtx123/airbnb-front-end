@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" routerLink="/trangchu">HTTP</a>
+      <a class="navbar-brand" routerLink="/trangchu"><img src="https://www.upsieutoc.com/images/2019/12/04/http-1.png" alt="http-1.png" border="0" /></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,7 +19,8 @@
           <ul class="dropdown-menu">
             <li class="rlink" *ngIf="tokenStorage.getAuthorities() === 'ROLE_HOST'"><a routerLink="/host">Đăng nhập với quyền: {{tokenStorage.getAuthoritiesLC()}}</a></li>
             <li class="rlink" *ngIf="tokenStorage.getAuthorities() === 'ROLE_USER'"><a routerLink="/user">Đăng nhập với quyền: {{tokenStorage.getAuthoritiesLC()}}</a></li>
-
+            <li class="rlink" ><a routerLink="/addprofile" >Cập nhật thông tin tài khoản</a></li>
+            <li class="rlink"><a routerLink="/editPassword">Đổi mật khẩu</a></li>
 <!--            <li role="separator" class="divider"></li>-->
 <!--            <li><a href="#">Separated link</a></li>-->
 <!--            <li role="separator" class="divider"></li>-->
@@ -33,6 +34,9 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
+<!--      <ul class="nav navbar-nav" *ngIf="message">-->
+<!--        <form class="navbar-form navbar-left">{{message}}</form>-->
+<!--        </ul>-->
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">{{tokenStorage.getEmailLC()}}</a></li>
         <li class="dropdown">
@@ -40,13 +44,9 @@
           >Tài khoản <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="rlink" *ngIf="tokenStorage.getAuthorities() == null"><a routerLink="/login">Đăng nhập</a></li>
-            <li class="rlink" *ngIf="tokenStorage.getAuthorities() == null"><a routerLink="/register">Đăng ký</a></li>
+            <li class="rlink" *ngIf="tokenStorage.getAuthorities() == null"><a routerLink="register">Đăng ký</a></li>
             <li role="separator" class="divider"></li>
-            <ng-container *ngIf="tokenStorage.getAuthorities()!=null">
-            <li class="rlink" ><a routerLink="/addprofile" >Cập nhật thông tin tài khoản</a></li>
-            <li class="rlink"><a routerLink="/editPassword">Đổi mật khẩu</a></li>
-            <li class="rlink" ><a (click)="logout()" type="submit" routerLink="/trangchu"> Logout </a></li>
-            </ng-container>
+            <li class="rlink" *ngIf="tokenStorage.getAuthorities() != null"><a (click)="logout()" type="submit" routerLink="/"> Logout </a></li>
           </ul>
         </li>
       </ul>

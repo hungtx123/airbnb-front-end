@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TokenStorageService} from '../auth/token-storage.service';
-
+// import * as $ from 'jquery';
 @Component({
   selector: 'app-trangchu',
   templateUrl: './trangchu.component.html',
@@ -8,9 +7,14 @@ import {TokenStorageService} from '../auth/token-storage.service';
 })
 export class TrangchuComponent implements OnInit {
 
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor() { }
 
   ngOnInit() {
   }
-
+  //
+  // settimeout() {
+  //   $('.carousel').carousel({
+  //     interval: 2000
+  //   });
+  // }
 }

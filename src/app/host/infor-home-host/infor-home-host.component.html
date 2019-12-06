@@ -17,20 +17,21 @@
         <h3 *ngIf="message">{{message}}</h3>
         <label class="col">
           Chọn mục đích sử dụng:
-          <select  formControlName="status" class="form-control">
+          <select formControlName="status" class="form-control">
             <option [defaultSelected]="1" value="1">AVAILABLE</option>
             <option value="2">BOOKED</option>
           </select>
         </label>
         <div class="form-group">
           Ngày bắt đầu
-          <input formControlName="beginDate" type="date" class="form-control" >
+          <input formControlName="beginDate" type="date" class="form-control">
         </div>
         <div class="form-group">
           Ngày kết thúc
-          <input formControlName="endDate" type="date" class="form-control" >
+          <input formControlName="endDate" type="date" class="form-control">
         </div>
         <button (click)="onSubmit()">Cập nhật</button>
+        <app-map></app-map>
       </form>
     </div>
   </div>

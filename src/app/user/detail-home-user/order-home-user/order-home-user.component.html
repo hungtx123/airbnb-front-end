@@ -1,15 +1,18 @@
 <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
-  <h3 *ngIf="message">{{message}}</h3>
-  <div class="form-group row">
-    <label class="col">
-      Check In </label>
-      <input type="date" class="form-control" formControlName="checkin">
+  <div class="alert alert-info" role="alert" *ngIf="message">
+    {{message}}
   </div>
   <div class="form-group row">
     <label class="col">
-      Check Out </label>
+      Check In
+      <input type="date" class="form-control" formControlName="checkin">
+    </label>
+  </div>
+  <div class="form-group row">
+    <label class="col">
+      Check Out
       <input type="date" class="form-control" formControlName="checkout">
-
+    </label>
     </div>
   <div class="form-group">
     <button class="btn btn-info" type="submit">BOOK</button>
@@ -17,7 +20,7 @@
 </form>
 <div class="form-group" *ngFor="let item of listTimeOrder; index as i" >
   <div *ngIf="item.status.id == 2">
-    Từ ngày: {{item.beginDate}} đến ngày: {{item.endDate}} đã có người book!
-    Bạn vui lòng book ngày khác.
+    Từ ngay: {{item.beginDate}} đến ngay: {{item.endDate}} đã có người book!
   </div>
 </div>
+Bạn vui lòng book ngày khác.

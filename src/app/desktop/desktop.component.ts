@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../auth/token-storage.service';
+import {ProfileService} from '../service/profile.service';
 
 @Component({
   selector: 'app-desktop',
@@ -9,7 +10,8 @@ import {TokenStorageService} from '../auth/token-storage.service';
 export class DesktopComponent implements OnInit {
   private message = '';
 
-  constructor(private tokenStorage: TokenStorageService) {
+  constructor(private tokenStorage: TokenStorageService,
+              private profileService: ProfileService) {
   }
 
   logout() {
@@ -17,5 +19,14 @@ export class DesktopComponent implements OnInit {
     this.message = 'Bạn đã đăng xuất';
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.profileService.getOneAccToken().subscribe(next2 => {
+      console.log('vao day chua');
+      console.log(next2);
+      this.tokenStorage.saveAuthorities(next2.role[0].name);
+      this.tokenStorage.saveEmail(next2.email);
+      console.log(next2.role[0]);
+    }, error => {this.message = 'Hết phiên đăng nhập vui lòng đăng nhập lại'; });
+
+  }
 }

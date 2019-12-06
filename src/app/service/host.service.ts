@@ -34,4 +34,11 @@ export class HostService {
   getAllBookListOneHouseById(id: number): Observable<IHomeOrder[]> {
     return this.http.get<IHomeOrder[]>(`${this.url.link}/api/host/listOrder/${id}`);
   }
+
+  setStatus(houseId: number): Observable<JwtResponse> {
+    return this.http.put<JwtResponse>(`${this.url.link}/api/host/done/${houseId}`, houseId);
+  }
+  setCancel(houseId: number): Observable<JwtResponse> {
+    return this.http.post<JwtResponse>(`${this.url.link}/api/order/delete/${houseId}`, houseId);
+  }
 }

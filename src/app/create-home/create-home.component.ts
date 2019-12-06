@@ -64,7 +64,8 @@ export class CreateHomeComponent implements OnInit {
           this.isCreatFailed = false;
           this.message = 'Tạo thành công';
           console.log('Thanh cong');
-        }, error => {
+          this.uploadService.image = 'undefined';
+          }, error => {
           this.message = 'Tạo không thành công';
           this.isCreatFailed = true;
         });

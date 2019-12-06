@@ -1,0 +1,26 @@
+<div class="alert alert-info" role="alert" *ngIf="message">
+  {{message}}
+</div>
+
+<div class="panel panel-default" >
+  <!-- Default panel contents -->
+  <div class="panel-heading">Đây là danh sách order nhà</div>
+  <table class="table">
+    <tr>
+      <th>Ten ngoi nha</th>
+      <th>Dia chi</th>
+      <th>Checkin</th>
+      <th>Checkout</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let item of orderlist; index as i">
+      <td>{{item.house.houseName}}</td>
+      <td>{{item.house.address}}</td>
+      <td>{{item.checkin}}</td>
+      <td>{{item.checkout}}</td>
+      <td>{{item.orderStatus.name}}</td>
+      <button *ngIf="item.orderStatus.name == 'PROCESSING'"  (click)="deny(item.id)">Xóa order</button>
+
+    </tr>
+  </table>
+</div>
