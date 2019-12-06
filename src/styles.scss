@@ -52,6 +52,18 @@ li:hover {
 .router{
   margin-top: 100px;
 }
+.carousel-control.right {
+  right: -30px;
+  left: auto;
+  width: 30px;
+  height: 383px;
+}
+.carousel-control.left {
+  right: auto;
+  left: -30px;
+  width: 30px;
+  height: 383px;
+}
 /* On screens that are 992px or less, set the background color to blue */
 @media screen and (max-width: 1200px) {
   body {
