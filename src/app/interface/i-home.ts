@@ -8,4 +8,6 @@ export interface IHome {
   area: number;
   price: number;
   imageUrls: string;
+  lat: number;
+  lng: number;
 }

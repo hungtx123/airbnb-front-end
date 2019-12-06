@@ -17,6 +17,8 @@ export class CreateHomeComponent implements OnInit {
   formGroup: FormGroup;
   message: string;
   isCreatFailed = false;
+  // lat: number;
+  // lng: number;
 
   constructor(private homeService: HostService,
               private fb: FormBuilder,
@@ -39,24 +41,26 @@ export class CreateHomeComponent implements OnInit {
 
   onSubmit() {
     if (this.formGroup.valid) {
-      this.formGroup.patchValue( {imageUrls: this.uploadService.image.slice(9).trim()});
+      this.formGroup.patchValue({imageUrls: this.uploadService.image.slice(9).trim()});
+      // this.formGroup.patchValue({lat: this.lat});
+      // this.formGroup.patchValue({lng: this.lng});
       const {value} = this.formGroup;
       console.log(value);
       switch (value.category) {
         case 1:
-          value.category = { name: 'Hotel'};
+          value.category = {name: 'Hotel'};
           break;
         case 2:
-          value.category = { name: 'House'};
+          value.category = {name: 'House'};
           break;
         case 3:
-          value.category = { name: 'Resort'};
+          value.category = {name: 'Resort'};
           break;
         case 4:
-          value.category = { name: 'Villa'};
+          value.category = {name: 'Villa'};
           break;
         default:
-          value.category = { name: 'House'};
+          value.category = {name: 'House'};
           break;
       }
       this.homeService.createHome(value).pipe()
@@ -65,12 +69,13 @@ export class CreateHomeComponent implements OnInit {
           this.message = 'Tạo thành công';
           console.log('Thanh cong');
           this.uploadService.image = 'undefined';
-          }, error => {
+        }, error => {
           this.message = 'Tạo không thành công';
           this.isCreatFailed = true;
         });
     }
   }
+
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
@@ -78,7 +83,6 @@ export class CreateHomeComponent implements OnInit {
   upload() {
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
-
     this.currentFileUpload = new FileUpload(file);
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {
@@ -89,5 +93,4 @@ export class CreateHomeComponent implements OnInit {
       }
     );
   }
-
 }
