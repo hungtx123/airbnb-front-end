@@ -47,3 +47,14 @@ li:hover {
 .router{
   margin-top: 100px;
 }
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1750px) {
+  body {
+    .panel-left img {
+      display: none;
+    }
+    .panel-right img{
+      display: none;
+    }
+  }
+}
