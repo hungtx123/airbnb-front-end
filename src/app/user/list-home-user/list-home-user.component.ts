@@ -9,12 +9,12 @@ import {UserService} from '../../service/user.service';
 })
 export class ListHomeUserComponent implements OnInit {
   output: HomeHost[];
-  info: HomeHost;
   message: string;
   constructor(private userService: UserService) { }
 
   ngOnInit() {this.userService.getAllHome().subscribe(next2 => {
     this.output = next2;
+    console.log(next2);
   }, error1 => this.message = 'khong thanh cong');
   }
 }

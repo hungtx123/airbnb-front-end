@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AccountService} from '../service/account.service';
 import {IRegister} from '../interface/i-register';
-import {HttpErrorResponse} from '@angular/common/http';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 function comparePassword(c: AbstractControl) {
   const v = c.value;
@@ -56,7 +56,11 @@ export class RegisterComponent implements OnInit {
           });
         }, (error: HttpErrorResponse) => {
           console.log('This is::::', error);
-          this.message = error.name;
+          if (error.status === 200) {
+            this.message = error.error.text;
+          } else if (error.status === 400) {
+            this.message = error.error;
+          }
         }) ;
     }
   }
