@@ -10,6 +10,7 @@ import {ISearch} from '../interface/i-search';
   providedIn: 'root'
 })
 export class AccountService {
+  public address: string;
   constructor(private http: HttpClient,
               private url: LinkAPIService) { }
   createAcc(user: Partial<IRegister>): Observable<IRegister> {

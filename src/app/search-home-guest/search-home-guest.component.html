@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row" >
+    <div class="col-md-3" *ngFor="let item of output; index as i">
+      <div class="thumbnail">
+        <a [routerLink]="['/user',item.id]">
+          <img class="media-object" src="{{item.imageUrls}}" width="280" height="280">
+          <div class="caption">
+            Name: {{item.houseName}}
+          </div>
+          <p>Địa chỉ: {{item.address}}</p>
+        </a>
+      </div>
+    </div>
+    <div *ngIf="!output"><h3>Danh sách rỗng</h3></div>
+  </div>
+</div>

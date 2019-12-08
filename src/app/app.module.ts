@@ -27,6 +27,7 @@ import { TrangchuComponent } from './trangchu/trangchu.component';
 import { ListOrderUserComponent } from './user/list-order-user/list-order-user.component';
 import {HomestayComponent} from './homestay/homestay.component';
 import {IncomeMonthComponent} from './host/infor-home-host/income-month/income-month.component';
+import { SearchHomeGuestComponent } from './search-home-guest/search-home-guest.component';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import {IncomeMonthComponent} from './host/infor-home-host/income-month/income-m
         ListOrderUserComponent,
         HomestayComponent,
         IncomeMonthComponent,
+        SearchHomeGuestComponent,
     ],
   imports: [
     BrowserModule,

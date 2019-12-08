@@ -1,38 +1,70 @@
-<div class="container">
-  <div class="media">
-    <div>
-      <div class="media-left media-middle" *ngFor="let im of image; index as i">
-        <img class="media-object" src="{{im}}" width="50" height="50">
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">Name: {{item.houseName}}</h4>
-        <p>Dia chi: {{item.address}}</p>
-        <p>So phong tam: {{item.bathroomNumber}}</p>
-        <p>So phong ngu: {{item.bedroomNumber}}</p>
-        <p>Loai phong: {{item.category.name}}</p>
-        <p>Gia: {{item.price}}</p>
-        <a class="btn" [routerLink]="['booklist']">Xem danh sách book </a>
-        <a class="btn" [routerLink]="['income']">Xem thu nhập tháng </a>
-      </div>
-      <form class="form-group" [formGroup]="statusHomeForm" (ngSubmit)="onSubmit()">
-        <label class="col">
-          Chọn mục đích sử dụng:
-          <select  formControlName="status" class="form-control">
-            <option [defaultSelected]="1" value="1">AVAILABLE</option>
-            <option value="2">BOOKED</option>
-          </select>
-        </label>
-        <div class="form-group">
-          Ngày bắt đầu
-          <input formControlName="beginDate" type="date" class="form-control" >
+<div class="container" *ngIf="image">
+  <div class="row" >
+    <div class="col-md-3" *ngFor="let im of image; index as i">
+      <div class="thumbnail">
+        <img class="media-object" src="{{im}}" width="280" height="280">
+        <div class="caption">
+          Ảnh :{{i}}
         </div>
-        <div class="form-group">
-          Ngày kết thúc
-          <input formControlName="endDate" type="date" class="form-control" >
-        </div>
-        <button (click)="onSubmit()">Cập nhật</button>
-      </form>
+      </div>
     </div>
   </div>
 </div>
+<div class="container">
+  <ul class="nav navbar-nav navbar-right">
+    <div class="btn-group btn-left">
+      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-tasks"></span></button>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a class="btn" [routerLink]="['booklist']">Xem danh sách book </a></li>
+        <li><a class="btn" [routerLink]="['income']">Xem thu nhập tháng </a></li>
+        <li><a class="btn" (click)="hostBook()" >Book </a></li>
+      </ul>
+    </div>
+  </ul>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <h2>Name: {{item.houseName}}</h2>
+          <!--  <div class="well well-sm">Small Well</div>-->
+          <div class="well">Địa chỉ : {{item.address}}</div>
+          <div class="well">Số phòng tắm: {{item.bathroomNumber}}</div>
+          <div class="well">Số phòng ngủ: {{item.bedroomNumber}}</div>
+          <div class="well">Loại phòng: {{item.category.name}}</div>
+          <div class="well">Giá tiền: {{item.price}}</div>
+          <!--  <div class="well well-lg">Large Well</div>-->
+          <form class="form-group" [formGroup]="statusHomeForm" (ngSubmit)="onSubmit()" *ngIf="book">
+            <hr><button *ngIf="book" class="btn btn-default pull-right" (click)="offBook()"><i class="glyphicon glyphicon-pencil"></i>Đóng</button>
+
+            <label class="col">
+<!--              Chọn mục đích sử dụng:-->
+              <select  formControlName="status" class="form-control">
+<!--                <option [defaultSelected]="1" value="1">AVAILABLE</option>-->
+                <option [defaultSelected]="2" value="2">BOOKED</option>
+              </select>
+            </label>
+            <div class="form-group">
+              Ngày bắt đầu
+              <input formControlName="beginDate" type="date" class="form-control" >
+            </div>
+            <div class="form-group">
+              Ngày kết thúc
+              <input formControlName="endDate" type="date" class="form-control" >
+            </div>
+            <button (click)="onSubmit()">Cập nhật</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 

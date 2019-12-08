@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   data: FormGroup;
   token: string;
   message: string;
+  edit: boolean;
   constructor(private route: ActivatedRoute,
               private fb: FormBuilder,
               private router: Router,
@@ -73,4 +74,11 @@ export class ProfileComponent implements OnInit {
     );
   }
 
+  showEdit() {
+    this.edit = true;
+  }
+
+  offEdit() {
+    this.edit = false;
+  }
 }

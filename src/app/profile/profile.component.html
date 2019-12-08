@@ -1,65 +1,139 @@
 <div class="alert alert-danger" role="alert" *ngIf="tokenStorageService.getAuthoritiesLC() === null">Bạn không có quyền truy cập trang này</div>
 
 <div class="container" *ngIf="tokenStorageService.getAuthoritiesLC()">
-  <div class="row">
-    <div class="col-md-6">
-      <div *ngIf="currentFileUpload" class="progress">
-        <div class="progress-bar progress-bar-info progress-bar-striped"
-             role="progressbar" attr.aria-valuenow="{{percentage}}"
-             aria-valuemin="0" aria-valuemax="100"
-             [ngStyle]="{width:percentage+'%'}">
-          {{percentage}}%</div>
-      </div>
-      <label class="btn btn-default"> <input type="file"
-                                             (change)="selectFile($event)">
-      </label>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-12 lead">User profile<hr></div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 text-center">
+                <img class="img-circle avatar avatar-original" style="-webkit-user-select:none;
+              display:block; margin:auto;" src="{{acc.avatar}}">
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1 class="only-bottom-margin">User Name</h1>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <span class="text-muted">Email:</span> {{acc.email}}<br>
+                    <span class="text-muted">Phone :</span> {{acc.phone}}<br>
+                    <span class="text-muted">Address:</span> {{acc.address}}<br><br>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="activity-mini">
 
-      <button class="btn btn-success" [disabled]="!selectedFiles"
-              (click)="upload()">Upload</button>
+                    </div>
+                    <div class="activity-mini">
 
-      <div class="form-group media">
-        <img src="{{acc.avatar}}" alt="" width="200" height="200">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <hr><button class="btn btn-default pull-right" (click)="showEdit()"><i class="glyphicon glyphicon-pencil"></i> Sửa</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <form [formGroup]="data" (ngSubmit)="editMember()" class="col-md-12 offset-md-8">
-        <input type="hidden" formControlName="token">
-        <div class="form-group row">
-          <label class="col-md-10">
-            Name
-            <input type="text" class="form-control" formControlName="name">
-          </label>
-        </div>
-        <div class="form-group row">
-          <label class="col-md-10">
-            Phone
-            <input type="text" class="form-control" formControlName="phone">
-          </label>
-        </div>
-        <div class="form-group row">
-          <label class="col-md-10">
-            Address
-            <input type="text" class="form-control" formControlName="address">
-          </label>
-        </div>
-        <div class="form-group row">
-          <label class="col-md-10">
-            <!--            avatar-->
-            <input type="hidden" class="form-control" formControlName="avatar">
-          </label>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-info" type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group media">
-        <img src="{{acc.avatar}}" alt="" width="200" height="200">
-      </div>
-      <p>{{acc.name}}</p>
-      <p>{{acc.phone}}</p>
-      <p>{{acc.address}}</p>
     </div>
   </div>
+  <div class="container" *ngIf="edit">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <hr><button *ngIf="edit" class="btn btn-default pull-right" (click)="offEdit()"><i class="glyphicon glyphicon-pencil"></i>Đóng</button>
+            <div class="form-group row">
+              <label class="col-md-10">
+                <div *ngIf="currentFileUpload" class="progress">
+                  <div class="progress-bar progress-bar-info progress-bar-striped"
+                       role="progressbar" attr.aria-valuenow="{{percentage}}"
+                       aria-valuemin="0" aria-valuemax="100"
+                       [ngStyle]="{width:percentage+'%'}">
+                    {{percentage}}%</div>
+                </div>
+                <label class="btn btn-default"> <input type="file"
+                                                       (change)="selectFile($event)">
+                </label>
+
+                <button class="btn btn-success" [disabled]="!selectedFiles"
+                        (click)="upload()">Upload</button>
+              </label>
+            </div>
+            <div class="row">
+              <form [formGroup]="data" (ngSubmit)="editMember()" class="col-md-12 offset-md-8">
+                <input type="hidden" formControlName="token">
+                <div class="form-group row">
+                  <label class="col-md-10">
+                    Name
+                    <input type="text" class="form-control" formControlName="name">
+                  </label>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-10">
+                    Phone
+                    <input type="text" class="form-control" formControlName="phone">
+                  </label>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-10">
+                    Address
+                    <input type="text" class="form-control" formControlName="address">
+                  </label>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-10">
+                    <!--            avatar-->
+                    <input type="hidden" class="form-control" formControlName="avatar">
+                  </label>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-info" type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  <div class="row" >-->
+<!--    <div class="col-md-6">-->
+<!--      <div *ngIf="currentFileUpload" class="progress">-->
+<!--        <div class="progress-bar progress-bar-info progress-bar-striped"-->
+<!--             role="progressbar" attr.aria-valuenow="{{percentage}}"-->
+<!--             aria-valuemin="0" aria-valuemax="100"-->
+<!--             [ngStyle]="{width:percentage+'%'}">-->
+<!--          {{percentage}}%</div>-->
+<!--      </div>-->
+<!--      <label class="btn btn-default"> <input type="file"-->
+<!--                                             (change)="selectFile($event)">-->
+<!--      </label>-->
+
+<!--      <button class="btn btn-success" [disabled]="!selectedFiles"-->
+<!--              (click)="upload()">Upload</button>-->
+<!--      -->
+<!--      -->
+<!--    </div>-->
+<!--    <div class="col-md-6">-->
+<!--      <div class="form-group media">-->
+<!--        <img src="{{acc.avatar}}" alt="" width="200" height="200">-->
+<!--      </div>-->
+<!--      <p>{{acc.name}}</p>-->
+<!--      <p>{{acc.phone}}</p>-->
+<!--      <p>{{acc.address}}</p>-->
+<!--    </div>-->
+<!--  </div>-->
 </div>
 
 

@@ -17,9 +17,12 @@ import {TrangchuComponent} from './trangchu/trangchu.component';
 import {ListOrderUserComponent} from './user/list-order-user/list-order-user.component';
 import {HomestayComponent} from './homestay/homestay.component';
 import {IncomeMonthComponent} from './host/infor-home-host/income-month/income-month.component';
+import {SearchHomeGuestComponent} from './search-home-guest/search-home-guest.component';
 
 
 const routes: Routes = [
+  {path: 'searchHome2',
+    component: SearchHomeGuestComponent},
   {path: 'homestay',
     component: HomestayComponent},
   {

@@ -4,6 +4,7 @@ import {FileUpload} from '../interface/FileUpload';
 import {HomeImageService} from '../service/home-image.service';
 import {HostService} from '../service/host.service';
 import {TokenStorageService} from '../auth/token-storage.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-create-home',
@@ -16,11 +17,10 @@ export class CreateHomeComponent implements OnInit {
   percentage: number;
   formGroup: FormGroup;
   message: string;
-  isCreatFailed = false;
-
+  imgArr: string[];
   constructor(private homeService: HostService,
               private fb: FormBuilder,
-              private uploadService: HomeImageService,
+              public uploadService: HomeImageService,
               private tokenStorageService: TokenStorageService) {
   }
 
@@ -61,12 +61,14 @@ export class CreateHomeComponent implements OnInit {
       }
       this.homeService.createHome(value)
         .subscribe(next => {
-          this.isCreatFailed = false;
           console.log('Thanh cong');
           this.uploadService.image = 'undefined';
-          }, error => {
-          this.message = 'Tạo không thành công';
-          this.isCreatFailed = true;
+          }, (error: HttpErrorResponse) => {
+          if (error.status === 200) {
+            this.message = error.error.text;
+          } else {
+            this.message = 'Tạo không thành công';
+          }
         });
     }
   }
