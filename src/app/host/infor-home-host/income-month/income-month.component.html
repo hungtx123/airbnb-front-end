@@ -1,20 +1,25 @@
-<form [formGroup]="orderTime" (ngSubmit)="calculate()" class="col-md-6 offset-md-3">
+<div class="col-md-4">
   <div class="alert alert-info" role="alert" *ngIf="message">
     {{message}}
   </div>
-  <div class="form-group row">
-    <label class="col">
-      Month
-      <input type="number" class="form-control" formControlName="month">
-    </label>
-  </div>
-  <div class="form-group row">
-    <label class="col">
-      Year
-      <input type="number" class="form-control" formControlName="year">
-    </label>
-  </div>
-  <div class="form-group">
-    <button class="btn btn-info" type="submit">Calculate</button>
-  </div>
-</form>
+  <form [formGroup]="incomePerMonthForm" (ngSubmit)="calculate()" class="col-md-6 offset-md-3">
+    <div class="form-group row">
+      <label class="col">
+        Thang :
+        <input type="number" class="form-control" formControlName="month">
+      </label>
+    </div>
+    <div class="form-group row">
+      <label class="col">
+        Nam :
+        <input type="number" class="form-control" formControlName="year">
+      </label>
+    </div>
+    <button type="submit" >Tính tiền</button>
+    <div class="form-group row">
+      <label class="col">
+        Kết quả: {{income}}
+      </label>
+    </div>
+  </form>
+</div>

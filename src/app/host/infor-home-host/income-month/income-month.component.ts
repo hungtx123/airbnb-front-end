@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HostService} from '../../../service/host.service';
-import {IHomeOrder} from '../../../interface/i-home-order';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MonthForm} from '../../../interface/MonthForm';
+import {applySourceSpanToExpressionIfNeeded} from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-income-month',
@@ -10,12 +11,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./income-month.component.scss']
 })
 export class IncomeMonthComponent implements OnInit {
-  houseId: number;
-  orderlist: IHomeOrder[];
-  orderTime: FormGroup;
-  month: number;
-  year: number;
-  message: string;
+  private message: string;
+  incomePerMonthForm: FormGroup;
+  income: number;
 
 
   constructor(private route: ActivatedRoute,
@@ -24,27 +22,25 @@ export class IncomeMonthComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.houseId = +this.route.snapshot.paramMap.get('id');
-    this.orderTime = this.fb.group({
-      month: ['', [Validators.required]],
-      year: ''
+    this.incomePerMonthForm = this.fb.group({
+      month: '',
+      year: '',
     });
-  };
-
-  calculate() {
-    this.houseId = +this.route.snapshot.paramMap.get('id');
-    if (this.orderTime.valid) {
-      const {value} = this.orderTime;
-      console.log(value);
-      this.hostService.getIncomePerMonth(this.houseId).subscribe(
-        next => {
-          console.log('set income thanh cong');
-        },
-        error => {
-          console.log('set income k thanh cong');
-        }
-      );
-    }
+    const id = +this.route.snapshot.paramMap.get('id');
   }
 
+  calculate() {
+    if (this.incomePerMonthForm.valid) {
+      const {value} = this.incomePerMonthForm;
+      console.log(this.incomePerMonthForm);
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.hostService.getIncomePerMonth(id, value).subscribe(
+      next => {
+        this.income = next;
+        this.message = 'lay thanh cong'
+        console.log('tinh thanh cong')
+      }, error => {console.log('k thanh cong')});
+  }
+
+  }
 }
