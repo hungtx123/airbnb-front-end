@@ -16,6 +16,7 @@ import {BookListOneHomeComponent} from './host/infor-home-host/book-list-one-hom
 import {TrangchuComponent} from './trangchu/trangchu.component';
 import {ListOrderUserComponent} from './user/list-order-user/list-order-user.component';
 import {IncomeMonthComponent} from './host/infor-home-host/income-month/income-month.component';
+import {CommentComponent} from './user/detail-home-user/comment/comment.component';
 
 
 const routes: Routes = [
@@ -61,7 +62,12 @@ const routes: Routes = [
       {
         path: ':id/order',
         component: OrderHomeUserComponent
+      },
+      {
+        path: ':id/comment',
+        component: CommentComponent
       }
+
     ]
   },
   {

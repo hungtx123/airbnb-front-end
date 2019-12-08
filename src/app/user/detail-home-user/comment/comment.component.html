@@ -1,0 +1,15 @@
+<form [formGroup]="commentForm" (ngSubmit)="comment()" class="col-md-6 offset-md-3">
+  <div class="form-group row">
+    <label class="col">
+      Nhận xét :
+      <input type="text" class="form-control" formControlName="comment">
+    </label>
+  </div>
+  <div class="form-group row">
+    <label class="col">
+      Đánh giá :
+      <input type="number" class="form-control" formControlName="rate">
+    </label>
+  </div>
+  <button type="submit" >Đăng</button>
+</form>

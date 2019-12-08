@@ -26,6 +26,7 @@ import { BookListOneHomeComponent } from './host/infor-home-host/book-list-one-h
 import { TrangchuComponent } from './trangchu/trangchu.component';
 import { ListOrderUserComponent } from './user/list-order-user/list-order-user.component';
 import { IncomeMonthComponent } from './host/infor-home-host/income-month/income-month.component';
+import { CommentComponent } from './user/detail-home-user/comment/comment.component';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { IncomeMonthComponent } from './host/infor-home-host/income-month/income
         TrangchuComponent,
         ListOrderUserComponent,
         IncomeMonthComponent,
+        CommentComponent,
     ],
   imports: [
     BrowserModule,

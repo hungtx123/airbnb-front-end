@@ -7,6 +7,7 @@ import {Order} from '../interface/order';
 import {StatusListUser} from '../interface/StatusListUser';
 import {LinkAPIService} from './link-api.service';
 import {IHomeOrder} from '../interface/i-home-order';
+import {IComment} from '../interface/i-comment';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,9 @@ export class UserService {
 
   setCancel(houseId: number): Observable<JwtResponse> {
     return this.http.post<JwtResponse>(`${this.url.link}/api/order/delete/${houseId}`, houseId);
+  }
+
+  comment(comment: IComment): Observable<any>{
+    return this.http.post<any>(`${this.url.link}/comment`, comment );
   }
 }
