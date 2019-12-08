@@ -36,13 +36,42 @@ li:hover {
 }
 .panel-left img {
   border-radius: 8px;
-  margin-top: 100px;
-  margin-left: 50px;
+  width: 200px;
+  height: 600px;
+  margin-top: 80px;
   position: fixed;
 }
 .panel-right img{
+  width: 200px;
+  height: 600px;
   border-radius: 8px;
-  margin-top: 100px;
-  margin-left: 1550px;
+  margin-top: 80px;
+  margin-left: 80px;
   position: fixed;
+}
+.router{
+  margin-top: 100px;
+}
+.carousel-control.right {
+  right: -30px;
+  left: auto;
+  width: 30px;
+  height: 383px;
+}
+.carousel-control.left {
+  right: auto;
+  left: -30px;
+  width: 30px;
+  height: 383px;
+}
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1200px) {
+  body {
+    .panel-left img {
+      display: none;
+    }
+    .panel-right img{
+      display: none;
+    }
+  }
 }
