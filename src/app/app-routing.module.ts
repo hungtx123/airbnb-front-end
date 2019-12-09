@@ -17,6 +17,7 @@ import {TrangchuComponent} from './trangchu/trangchu.component';
 import {ListOrderUserComponent} from './user/list-order-user/list-order-user.component';
 import {IncomeMonthComponent} from './host/infor-home-host/income-month/income-month.component';
 import {EditHomeComponent} from './host/edit-home/edit-home.component';
+import {DeleteHomeComponent} from './host/delete-home/delete-home.component';
 
 
 const routes: Routes = [
@@ -93,6 +94,10 @@ const routes: Routes = [
       {
         path: ':id/edit',
         component: EditHomeComponent,
+      },
+      {
+        path: ':id/delete',
+        component: DeleteHomeComponent,
       }
     ]
   }

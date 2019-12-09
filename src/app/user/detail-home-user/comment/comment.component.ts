@@ -27,7 +27,7 @@ export class CommentComponent implements OnInit {
   comment() {
     if (this.commentForm.valid) {
       const id = +this.route.snapshot.paramMap.get('id');
-      this.commentForm.patchValue( {house: {id: id}});
+      this.commentForm.patchValue( {house: {id}});
       const{value} = this.commentForm;
       this.userService.comment(value).subscribe(
         next => {
