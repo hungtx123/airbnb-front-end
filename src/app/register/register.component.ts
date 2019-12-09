@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
           });
         }, (error: HttpErrorResponse) => {
           console.log('This is::::', error);
-          if (error.status === 200) {
+          if (error.status === 201) {
             this.message = error.error.text;
           } else if (error.status === 400) {
             this.message = error.error;

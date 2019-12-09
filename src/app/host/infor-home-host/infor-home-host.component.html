@@ -30,22 +30,16 @@
     <div class="col-md-9">
       <div class="panel panel-default">
         <div class="panel-body">
-
-          <h2>Name: {{item.houseName}}</h2>
-          <!--  <div class="well well-sm">Small Well</div>-->
-          <div class="well">Địa chỉ : {{item.address}}</div>
-          <div class="well">Số phòng tắm: {{item.bathroomNumber}}</div>
-          <div class="well">Số phòng ngủ: {{item.bedroomNumber}}</div>
-          <div class="well">Loại phòng: {{item.category.name}}</div>
-          <div class="well">Giá tiền: {{item.price}}</div>
-          <!--  <div class="well well-lg">Large Well</div>-->
+          <div class="alert alert-info" role="alert" *ngIf="message">
+            <h4 class="alert-heading">{{message}}</h4>
+          </div>
           <form class="form-group" [formGroup]="statusHomeForm" (ngSubmit)="onSubmit()" *ngIf="book">
-            <hr><button *ngIf="book" class="btn btn-default pull-right" (click)="offBook()"><i class="glyphicon glyphicon-pencil"></i>Đóng</button>
+            <hr><button *ngIf="book" class="btn btn-default pull-right" (click)="offBook()">Đóng</button>
 
             <label class="col">
-<!--              Chọn mục đích sử dụng:-->
+              <!--              Chọn mục đích sử dụng:-->
               <select  formControlName="status" class="form-control">
-<!--                <option [defaultSelected]="1" value="1">AVAILABLE</option>-->
+                <!--                <option [defaultSelected]="1" value="1">AVAILABLE</option>-->
                 <option [defaultSelected]="2" value="2">BOOKED</option>
               </select>
             </label>
@@ -57,8 +51,18 @@
               Ngày kết thúc
               <input formControlName="endDate" type="date" class="form-control" >
             </div>
-            <button (click)="onSubmit()">Cập nhật</button>
+            <button class="btn btn-success" (click)="onSubmit()">Cập nhật</button>
           </form>
+          <hr>
+          <h2>Name: {{item.houseName}}</h2>
+          <!--  <div class="well well-sm">Small Well</div>-->
+          <div class="well">Địa chỉ : {{item.address}}</div>
+          <div class="well">Số phòng tắm: {{item.bathroomNumber}}</div>
+          <div class="well">Số phòng ngủ: {{item.bedroomNumber}}</div>
+          <div class="well">Loại phòng: {{item.category.name}}</div>
+          <div class="well">Giá tiền: {{item.price}}</div>
+          <!--  <div class="well well-lg">Large Well</div>-->
+
 
         </div>
       </div>

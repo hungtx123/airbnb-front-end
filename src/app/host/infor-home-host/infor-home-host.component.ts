@@ -3,6 +3,7 @@ import {HostService} from '../../service/host.service';
 import {ActivatedRoute} from '@angular/router';
 import {HomeHost} from '../../interface/home-host';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-infor-home-host',
@@ -56,8 +57,13 @@ export class InforHomeHostComponent implements OnInit {
       this.hostService.updateStatusHome(value)
         .subscribe(next => {
           console.log(next);
-          this.message = 'Cap nhat thanh cong';
-        }, error => this.message = 'Cap nhat khong thành công' ) ;
+        }, (error: HttpErrorResponse) => {
+          if (error.status === 201) {
+            this.message = error.error.text;
+          } else if (error.status === 400) {
+            this.message = error.error;
+          }
+        } ) ;
     }
   }
   hostBook() {

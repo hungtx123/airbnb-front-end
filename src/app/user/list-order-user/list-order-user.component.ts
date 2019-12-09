@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IHomeOrder} from '../../interface/i-home-order';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-list-order-user',
@@ -20,10 +21,12 @@ export class ListOrderUserComponent implements OnInit {
     this.userService.listAllOrderByUser().subscribe(
       next => {
         this.orderlist = next;
-        console.log(next);
-        console.log('lay danh sach order thanh cong');
-      }, error => {
-        console.log('lay ds k thanh cong');
+      }, (error: HttpErrorResponse) => {
+        if ( error.status === 400) {
+          this.message = error.error;
+        } else if (error.status === 200) {
+          this.message = error.error.text;
+        }
       }
     );
   }
@@ -37,14 +40,21 @@ export class ListOrderUserComponent implements OnInit {
             this.message = 'thanh cong';
             console.log(next2);
             console.log(this.orderlist);
-          }, error3 => {
-            this.message = 'khong thanh cong';
+          }, (error: HttpErrorResponse) => {
+            if ( error.status === 400) {
+              this.message = error.error;
+            } else if (error.status === 200) {
+              this.message = error.error.text;
+            }
           }
         );
         console.log('set trang thai thanh cong');
-      }, error4 => {
-        console.log('set trang thai k thanh cong');
-      }
+      }, (error4: HttpErrorResponse) => {
+        if (error4.status === 400) {
+          this.message = error4.error;
+        } else if (error4.status === 200) {
+          this.message = error4.error.text;
+        }}
     );
   }
 }
