@@ -28,6 +28,8 @@ import { ListOrderUserComponent } from './user/list-order-user/list-order-user.c
 import {HomestayComponent} from './homestay/homestay.component';
 import {IncomeMonthComponent} from './host/infor-home-host/income-month/income-month.component';
 import { SearchHomeGuestComponent } from './search-home-guest/search-home-guest.component';
+import { CommentComponent } from './user/detail-home-user/comment/comment.component';
+import { ListCommentComponent } from './user/detail-home-user/list-comment/list-comment.component';
 
 @NgModule({
     declarations: [
@@ -51,6 +53,8 @@ import { SearchHomeGuestComponent } from './search-home-guest/search-home-guest.
         HomestayComponent,
         IncomeMonthComponent,
         SearchHomeGuestComponent,
+        CommentComponent,
+        ListCommentComponent,
     ],
   imports: [
     BrowserModule,
