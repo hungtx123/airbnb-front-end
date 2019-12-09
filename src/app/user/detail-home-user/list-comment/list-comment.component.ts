@@ -13,7 +13,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
   styleUrls: ['./list-comment.component.scss']
 })
 export class ListCommentComponent implements OnInit {
-  comments: IListComment;
+  comments: IListComment[];
   info: IComment;
   message: string;
   commentForm: FormGroup;
@@ -21,19 +21,19 @@ export class ListCommentComponent implements OnInit {
   constructor(private hostService: HostService,
               private route: ActivatedRoute,
               private userService: UserService,
-              private fb: FormBuilder,) {
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.hostService.getListComment(id).subscribe(next => {
-    this.comments = next;
     this.commentForm = this.fb.group({
-      house:'',
+      house: '',
       comment: '',
       rate: ''
     });
-    console.log('lay cmt thanh cong')
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.hostService.getListComment(id).subscribe(next => {
+    this.comments = next;
+    console.log('lay cmt thanh cong');
   }, error1 => this.message = 'khong thanh cong');
   }
 
@@ -43,10 +43,11 @@ export class ListCommentComponent implements OnInit {
       this.commentForm.patchValue( {house: {id}});
       const{value} = this.commentForm;
       this.userService.comment(value).subscribe(
-        next => {this.hostService.getListComment(id).subscribe(next => {
-          this.comments = next;});
-          console.log('comment thanh cong')
-        }, error => {console.log('comment k thanh cong')});
+        next => { console.log('comment thanh cong');
+                  this.hostService.getListComment(id).subscribe(next2 => {
+                    console.log('hien list cmt moi');
+                    this.comments = next2; } );
+        }, error => {console.log('comment k thanh cong' ); } );
     }
   }
 
