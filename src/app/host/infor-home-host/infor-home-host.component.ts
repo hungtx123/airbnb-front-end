@@ -14,6 +14,7 @@ export class InforHomeHostComponent implements OnInit {
   image: any;
   private message: string;
   statusHomeForm: FormGroup;
+  public book: boolean;
   constructor(private route: ActivatedRoute,
               private hostService: HostService,
               private fb: FormBuilder) { }
@@ -41,14 +42,14 @@ export class InforHomeHostComponent implements OnInit {
       const {value} = this.statusHomeForm;
       console.log(value.status);
       switch (value.status) {
-        case '1':
-          value.status = { name: 'AVAILABLE'};
-          break;
+        // case '1':
+        //   value.status = { name: 'AVAILABLE'};
+        //   break;
         case '2':
           value.status = { name: 'BOOKED'};
           break;
         default:
-          value.status = { name: 'AVAILABLE'};
+          value.status = { name: 'BOOKED'};
           break;
       }
       console.log(value);
@@ -59,10 +60,11 @@ export class InforHomeHostComponent implements OnInit {
         }, error => this.message = 'Cập nhật không thành công' ) ;
     }
   }
+  hostBook() {
+    this.book = true;
+  }
 
-  // formatDate(date) {
-  //   const from = date.split('-');
-  //   const f = new Date(from[2], from[1], from[0]);
-  //   const dateNew = f.getFullYear() + '-' + f.getMonth() + '-' + f.getDate();
-  // }
+  offBook() {
+    this.book = false;
+  }
 }

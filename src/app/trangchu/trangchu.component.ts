@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import * as $ from 'jquery';
 @Component({
   selector: 'app-trangchu',
   templateUrl: './trangchu.component.html',
@@ -11,10 +10,4 @@ export class TrangchuComponent implements OnInit {
 
   ngOnInit() {
   }
-  //
-  // settimeout() {
-  //   $('.carousel').carousel({
-  //     interval: 2000
-  //   });
-  // }
 }

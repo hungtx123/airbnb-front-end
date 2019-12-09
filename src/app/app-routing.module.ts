@@ -15,14 +15,20 @@ import {OrderHomeUserComponent} from './user/detail-home-user/order-home-user/or
 import {BookListOneHomeComponent} from './host/infor-home-host/book-list-one-home/book-list-one-home.component';
 import {TrangchuComponent} from './trangchu/trangchu.component';
 import {ListOrderUserComponent} from './user/list-order-user/list-order-user.component';
-import {MapComponent} from './map/map.component';
+import {HomestayComponent} from './homestay/homestay.component';
+import {IncomeMonthComponent} from './host/infor-home-host/income-month/income-month.component';
+import {SearchHomeGuestComponent} from './search-home-guest/search-home-guest.component';
 
 
 const routes: Routes = [
   {
-    path: 'map',
-    component: MapComponent
-  },
+  path: 'searchHome2',
+  component: SearchHomeGuestComponent},
+
+  {path: 'searchHome2',
+    component: SearchHomeGuestComponent},
+  {path: 'homestay',
+    component: HomestayComponent},
   {
     path: 'trangchu',
     component: TrangchuComponent
@@ -87,6 +93,10 @@ const routes: Routes = [
       {
         path: ':id/booklist',
         component: BookListOneHomeComponent,
+      },
+      {
+        path: ':id/income',
+        component: IncomeMonthComponent,
       }
     ]
   }

@@ -1,10 +1,15 @@
-<div class="container">
-  <div class="form-group">
-    <button class="btn-group btn-group-lg"><a  type="button" routerLink="list-home">Click để xem danh sách nhà</a></button>
-    <button class="btn-group btn-group-lg"><a  type="button" routerLink="list-order">Click để xem danh sách order</a></button>
-    <br>
-  </div>
-  <router-outlet></router-outlet>
+<div class="container" *ngIf="tokenStorageService.getAuthoritiesLC() === 'ROLE_USER'">
+  <ul class="nav navbar-nav navbar-right">
+    <div class="btn-group btn-left">
+      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a routerLink="list-order">Danh sách order</a></li>
+        <li><a routerLink="list-home">Danh sách nhà</a></li>
+      </ul>
+    </div>
+  </ul>
 </div>
-
-
+<router-outlet></router-outlet>

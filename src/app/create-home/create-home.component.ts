@@ -4,6 +4,10 @@ import {FileUpload} from '../interface/FileUpload';
 import {HomeImageService} from '../service/home-image.service';
 import {HostService} from '../service/host.service';
 import {TokenStorageService} from '../auth/token-storage.service';
+import {HttpErrorResponse} from '@angular/common/http';
+import {HomeHost} from '../interface/home-host';
+import {IHome} from '../interface/i-home';
+
 
 @Component({
   selector: 'app-create-home',
@@ -16,14 +20,16 @@ export class CreateHomeComponent implements OnInit {
   percentage: number;
   formGroup: FormGroup;
   message: string;
-  isCreatFailed = false;
-  // lat: number;
-  // lng: number;
-
+  imgArr: string[];
+  homeHost: HomeHost;
+  iHome: IHome;
+  lat: number;
+  lng: number;
   constructor(private homeService: HostService,
               private fb: FormBuilder,
-              private uploadService: HomeImageService,
-              private tokenStorageService: TokenStorageService) {
+              public uploadService: HomeImageService,
+              private tokenStorageService: TokenStorageService,
+              public map: HostService) {
   }
 
   ngOnInit() {
@@ -35,47 +41,51 @@ export class CreateHomeComponent implements OnInit {
       area: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(0)]],
       category: ['', [Validators.required]],
-      imageUrls: null
+      imageUrls: null,
+      lat: null,
+      lng: null
     });
   }
 
-  onSubmit() {
+  onSubmit(event) {
     if (this.formGroup.valid) {
-      this.formGroup.patchValue({imageUrls: this.uploadService.image.slice(9).trim()});
-      // this.formGroup.patchValue({lat: this.lat});
-      // this.formGroup.patchValue({lng: this.lng});
+      this.formGroup.patchValue( {imageUrls: this.uploadService.image.slice(9).trim()});
+      this.formGroup.patchValue( {lat: this.map.lat});
+      this.formGroup.patchValue( {lng: this.map.lng});
       const {value} = this.formGroup;
       console.log(value);
       switch (value.category) {
         case 1:
-          value.category = {name: 'Hotel'};
+          value.category = { name: 'Hotel'};
           break;
         case 2:
-          value.category = {name: 'House'};
+          value.category = { name: 'House'};
           break;
         case 3:
-          value.category = {name: 'Resort'};
+          value.category = { name: 'Resort'};
           break;
         case 4:
-          value.category = {name: 'Villa'};
+          value.category = { name: 'Villa'};
           break;
         default:
-          value.category = {name: 'House'};
+          value.category = { name: 'House'};
           break;
       }
-      this.homeService.createHome(value).pipe()
+      // console.log(event.coords.lat);
+      this.homeService.createHome(value)
         .subscribe(next => {
-          this.isCreatFailed = false;
-          this.message = 'Tạo thành công';
+          console.log(this.map.lat);
           console.log('Thanh cong');
           this.uploadService.image = 'undefined';
-        }, error => {
-          this.message = 'Tạo không thành công';
-          this.isCreatFailed = true;
+          }, (error: HttpErrorResponse) => {
+          if (error.status === 200) {
+            this.message = error.error.text;
+          } else {
+            this.message = 'Tạo không thành công';
+          }
         });
     }
   }
-
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
@@ -83,6 +93,7 @@ export class CreateHomeComponent implements OnInit {
   upload() {
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
+
     this.currentFileUpload = new FileUpload(file);
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {
@@ -93,4 +104,5 @@ export class CreateHomeComponent implements OnInit {
       }
     );
   }
+
 }

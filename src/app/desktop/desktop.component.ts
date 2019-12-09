@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {ProfileService} from '../service/profile.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AccountService} from '../service/account.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-desktop',
@@ -9,9 +12,13 @@ import {ProfileService} from '../service/profile.service';
 })
 export class DesktopComponent implements OnInit {
   private message = '';
+  formGroup: FormGroup;
 
   constructor(private tokenStorage: TokenStorageService,
-              private profileService: ProfileService) {
+              private profileService: ProfileService,
+              private fb: FormBuilder,
+              public acc: AccountService,
+              private  router: Router) {
   }
 
   logout() {
@@ -20,6 +27,9 @@ export class DesktopComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formGroup = this.fb.group({
+      address: ''
+    });
     this.profileService.getOneAccToken().subscribe(next2 => {
       console.log('vao day chua');
       console.log(next2);
@@ -28,5 +38,13 @@ export class DesktopComponent implements OnInit {
       console.log(next2.role[0]);
     }, error => {this.message = 'Hết phiên đăng nhập vui lòng đăng nhập lại'; });
 
+  }
+
+  onSubmit() {
+    const {value} = this.formGroup;
+    console.log(value);
+    this.acc.address = value.address;
+    console.log(value.address);
+    this.router.navigate(['searchHome2']);
   }
 }

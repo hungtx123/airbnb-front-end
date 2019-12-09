@@ -1,0 +1,11 @@
+<div class="content">
+  <agm-map
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="zoom"
+    [disableDoubleClickZoom]="true">
+    <agm-marker [latitude]="this.lat" [longitude]="this.lng" [markerDraggable]="true" ></agm-marker>
+
+  </agm-map>
+</div>
+<router-outlet></router-outlet>

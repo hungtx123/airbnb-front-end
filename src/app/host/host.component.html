@@ -1,8 +1,17 @@
 <div class="container">
-  <div class="form-group">
-    <button class="btn-group btn-group-lg"><a routerLink="create-home">Click để tạo nhà mới </a></button>
-    <button class="btn-group btn-group-lg"><a routerLink="list-home">Click để xem danh sách nhà </a></button>
-  </div>
-  <router-outlet></router-outlet>
+  <ul class="nav navbar-nav navbar-right">
+    <div class="btn-group btn-left">
+      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a routerLink="create-home">Tạo nhà mới</a></li>
+        <li><a routerLink="list-home">Danh sách nhà của tôi</a></li>
+      </ul>
+    </div>
+  </ul>
 </div>
+<router-outlet></router-outlet>
+
 

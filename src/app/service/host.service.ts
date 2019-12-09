@@ -7,12 +7,15 @@ import {StatusSetByHost} from '../interface/statusSetByHost';
 import {JwtResponse} from '../interface/JwResponse';
 import {IHomeOrder} from '../interface/i-home-order';
 import {LinkAPIService} from './link-api.service';
+import {MonthForm} from '../interface/MonthForm';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class HostService {
+  public lat: number;
+  public lng: number;
   constructor(private http: HttpClient,
               private url: LinkAPIService) {
   }
@@ -40,5 +43,8 @@ export class HostService {
   }
   setCancel(houseId: number): Observable<JwtResponse> {
     return this.http.post<JwtResponse>(`${this.url.link}/api/order/delete/${houseId}`, houseId);
+  }
+  getIncomePerMonth(houseId: number, monthForm: MonthForm): Observable<number> {
+    return this.http.post<number>(`${this.url.link}/api/host/income/${houseId}`, monthForm);
   }
 }
