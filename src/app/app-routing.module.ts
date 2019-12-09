@@ -16,8 +16,7 @@ import {BookListOneHomeComponent} from './host/infor-home-host/book-list-one-hom
 import {TrangchuComponent} from './trangchu/trangchu.component';
 import {ListOrderUserComponent} from './user/list-order-user/list-order-user.component';
 import {IncomeMonthComponent} from './host/infor-home-host/income-month/income-month.component';
-import {CommentComponent} from './user/detail-home-user/comment/comment.component';
-import {ListCommentComponent} from './user/detail-home-user/list-comment/list-comment.component';
+import {EditHomeComponent} from './host/edit-home/edit-home.component';
 
 
 const routes: Routes = [
@@ -90,6 +89,10 @@ const routes: Routes = [
       {
         path: ':id/income',
         component: IncomeMonthComponent,
+      },
+      {
+        path: ':id/edit',
+        component: EditHomeComponent,
       }
     ]
   }

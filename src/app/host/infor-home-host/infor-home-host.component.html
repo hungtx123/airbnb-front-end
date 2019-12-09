@@ -13,6 +13,7 @@
         <p>Gia: {{item.price}}</p>
         <a class="btn" [routerLink]="['booklist']">Xem danh sách book </a>
         <a class="btn" [routerLink]="['income']">Xem thu nhập tháng </a>
+        <a class="btn" [routerLink]="['edit']">Sửa </a>
       </div>
       <form class="form-group" [formGroup]="statusHomeForm" (ngSubmit)="onSubmit()">
         <label class="col">
