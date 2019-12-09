@@ -14,6 +14,8 @@ import {MonthForm} from '../interface/MonthForm';
   providedIn: 'root'
 })
 export class HostService {
+  public lat: number;
+  public lng: number;
   constructor(private http: HttpClient,
               private url: LinkAPIService) {
   }
