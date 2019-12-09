@@ -4,6 +4,7 @@ import {UserService} from '../../../service/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {ProfileService} from '../../../service/profile.service';
 import {StatusListUser} from '../../../interface/StatusListUser';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-order-home-user',
@@ -56,79 +57,13 @@ export class OrderHomeUserComponent implements OnInit {
       this.userService.orderHome(value)
         .subscribe(next => {
           console.log(next);
-          this.message = 'Cap nhat thanh cong';
-        }, error => this.message = 'Cap nhat khong thành công' ) ;
+        }, (error: HttpErrorResponse) => {
+          if (error.status === 200) {
+            this.message = error.error.text;
+          } else if (error.status === 400) {
+            this.message = error.error;
+          }
+        } ) ;
     }
   }
-
-  // checkDateOder(next: StatusListUser[]) {
-  //   // tslint:disable-next-line:prefer-const
-  //   let next2: StatusListUser[];
-  //   let Now1;
-  //   let Now2;
-  //   let Now3;
-  //   let m1;
-  //   let m2;
-  //   let m3;
-  //   const month1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11, 12, 14, 15, 16 , 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-  //   const month2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11, 12, 14, 15, 16 , 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 28];
-  //   const month4 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11, 12, 14, 15, 16 , 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 30];
-  //   const month = next[0].beginDate.split('-');
-  //   const listMonth = [0, month1, month2, month1, month4, month1, month4, month1, month1, month4, month1, month4, month1];
-  //   // tslint:disable-next-line:radix
-  //   const a = parseInt(month[1]);
-  //   if (a === 12) {
-  //     Now1 = 12;
-  //     Now2 = 1;
-  //     Now3 = 2;
-  //     m1 = listMonth[12];
-  //     m2 = listMonth [1];
-  //     m3 = listMonth[2];
-  //   } else if (a === 11) {
-  //     Now1 = 11;
-  //     Now2 = 12;
-  //     Now3 = 1;
-  //     m1 = listMonth[11];
-  //     m2 = listMonth [12];
-  //     m3 = listMonth[1];
-  //   } else {
-  //     Now1 = a;
-  //     Now2 = a + 1;
-  //     Now3 = a + 2;
-  //     m1 = listMonth[Now1];
-  //     m2 = listMonth [Now2];
-  //     m3 = listMonth[Now3];
-  //   }
-  //   // tslint:disable-next-line:prefer-for-of
-  //   for (let i = 0; i < next.length; i++) {
-  //     if (next[i].status.id === 2) {
-  //       next2.push(next[i]);
-  //     }
-  //   }
-  //   // tslint:disable-next-line:prefer-for-of
-  //   for (let i = 0; i < next2.length; i++) {
-  //     const beginDate = next2[i].beginDate.split('-');
-  //     const endDate = next2[i].endDate.split('-');
-  //     // tslint:disable-next-line:radix
-  //     const x = parseInt(beginDate[1]);
-  //     // tslint:disable-next-line:radix
-  //     const y = parseInt(beginDate[2]);
-  //     // tslint:disable-next-line:radix
-  //     const c = parseInt(endDate[1]);
-  //     // tslint:disable-next-line:radix
-  //     const b = parseInt(endDate[2]);
-  //     if (y < b) {
-  //       for (let j = y; j < b; j ++) {
-  //         listMonth[x][i] = ' ';
-  //       }
-  //     } else if (y > b) {
-  //       for (let j = y; j <= 31; j ++) {
-  //         listMonth[x][i] = ' ';
-  //       }
-  //       for (let j = 1; j <= b; j ++) {
-  //         listMonth[c][i] = ' ';
-  //       }
-  //     }
-  //   }
-  // }
 }

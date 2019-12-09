@@ -15,16 +15,16 @@
   <div class="row">
     <div class="col-md-9">
       <div class="panel panel-default">
-        <a *ngIf="tokenStorageService.getAuthoritiesLC() === 'ROLE_USER'" [routerLink]="['order']" class="btn btn-info">Đặt nhà</a>
+        <a *ngIf="tokenStorageService.getAuthoritiesLC() === 'ROLE_USER'" [routerLink]="['order']" class="btn btn-info pull-right">Đặt nhà</a>
         <div class="panel-body">
 
           <h2>Name: {{item.houseName}}</h2>
           <!--  <div class="well well-sm">Small Well</div>-->
-          <div class="well">Địa chỉ : {{item.address}}</div>
-          <div class="well">Số phòng tắm: {{item.bathroomNumber}}</div>
-          <div class="well">Số phòng ngủ: {{item.bedroomNumber}}</div>
-          <div class="well">Loại phòng: {{item.category.name}}</div>
-          <div class="well">Giá tiền: {{item.price}}</div>
+          <div class="well well-sm">Địa chỉ : {{item.address}}</div>
+          <div class="well well-sm">Số phòng tắm: {{item.bathroomNumber}}</div>
+          <div class="well well-sm">Số phòng ngủ: {{item.bedroomNumber}}</div>
+          <div class="well well-sm">Loại phòng: {{item.category.name}}</div>
+          <div class="well well-sm">Giá tiền: {{item.price}}</div>
           <!--  <div class="well well-lg">Large Well</div>-->
         </div>
       </div>

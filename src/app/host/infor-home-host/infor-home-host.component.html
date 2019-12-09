@@ -34,7 +34,7 @@
             <h4 class="alert-heading">{{message}}</h4>
           </div>
           <form class="form-group" [formGroup]="statusHomeForm" (ngSubmit)="onSubmit()" *ngIf="book">
-            <hr><button *ngIf="book" class="btn btn-default pull-right" (click)="offBook()">Đóng</button>
+            <button *ngIf="book" class="btn btn-default pull-right" (click)="offBook()">Đóng</button>
 
             <label class="col">
               <!--              Chọn mục đích sử dụng:-->
@@ -56,11 +56,11 @@
           <hr>
           <h2>Name: {{item.houseName}}</h2>
           <!--  <div class="well well-sm">Small Well</div>-->
-          <div class="well">Địa chỉ : {{item.address}}</div>
-          <div class="well">Số phòng tắm: {{item.bathroomNumber}}</div>
-          <div class="well">Số phòng ngủ: {{item.bedroomNumber}}</div>
-          <div class="well">Loại phòng: {{item.category.name}}</div>
-          <div class="well">Giá tiền: {{item.price}}</div>
+          <div class="well well-sm">Địa chỉ : {{item.address}}</div>
+          <div class="well well-sm">Số phòng tắm: {{item.bathroomNumber}}</div>
+          <div class="well well-sm">Số phòng ngủ: {{item.bedroomNumber}}</div>
+          <div class="well well-sm">Loại phòng: {{item.category.name}}</div>
+          <div class="well well-sm">Giá tiền: {{item.price}}</div>
           <!--  <div class="well well-lg">Large Well</div>-->
 
 
