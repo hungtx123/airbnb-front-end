@@ -15,8 +15,9 @@
         <p>{{item.price}}</p>
       </div>
       <a [routerLink]="['order']" class="btn btn-info">Đặt nhà</a>
-      <a [routerLink]="['comment']" class="btn btn-info">Bình luận</a>
     </div>
   </div>
 </div>
+<app-list-comment></app-list-comment>
+<app-comment></app-comment>
 <router-outlet></router-outlet>

@@ -45,4 +45,8 @@ export class HostService {
   getIncomePerMonth(houseId: number, monthForm: MonthForm): Observable<number> {
     return this.http.post<number>(`${this.url.link}/api/host/income/${houseId}`, monthForm);
   }
+  getListComment(houseId: number): Observable<any> {
+    return this.http.get<any>(`${this.url.link}/api/guest/comment/${houseId}`);
+
+  }
 }
