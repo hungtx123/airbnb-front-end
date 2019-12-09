@@ -1,9 +1,37 @@
 <div class="container">
-  <div class="row" >
-    <div class="col-md-12" *ngFor="let item of comments; index as i">
-      <p>User: {{item.user.email}}</p>
-      <p>Comment: {{item.comment}}</p>
-      <p>Rate: {{item.rate}}</p>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="list-group" *ngFor="let item of comments; index as i">
+            <a class="list-group-item disabled">User: {{item.user.email}}</a>
+            <a class="list-group-item">Comment: {{item.comment}}</a>
+            <a *ngIf="item.rate === 1" class="list-group-item"><span class="glyphicon glyphicon-star"></span></a>
+            <a *ngIf="item.rate === 2" class="list-group-item">
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+            </a>
+            <a *ngIf="item.rate === 3" class="list-group-item">
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+            </a>
+            <a *ngIf="item.rate === 4" class="list-group-item">
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+            </a>
+            <a *ngIf="item.rate === 5" class="list-group-item">
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
