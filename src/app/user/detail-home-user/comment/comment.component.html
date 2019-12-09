@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form [formGroup]="commentForm" (ngSubmit)="comment()">
+            <div class="form-group">
+              <label class="col-md-12">
+                Nhận xét :
+                <textarea class="form-control" formControlName="comment"></textarea>
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3">
+                Đánh giá :
+                <input type="number" class="form-control" formControlName="rate">
+              </label>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <hr><button class="btn btn-default" > Đăng</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -31,6 +31,8 @@ import { SearchHomeGuestComponent } from './search-home-guest/search-home-guest.
 import {MapComponent} from './map/map.component';
 import {AgmCoreModule} from '@agm/core';
 import { MapUserComponent } from './map-user/map-user.component';
+import { CommentComponent } from './user/detail-home-user/comment/comment.component';
+import { ListCommentComponent } from './user/detail-home-user/list-comment/list-comment.component';
 
 @NgModule({
     declarations: [
@@ -55,7 +57,9 @@ import { MapUserComponent } from './map-user/map-user.component';
         IncomeMonthComponent,
         SearchHomeGuestComponent,
       MapComponent,
-      MapUserComponent
+      MapUserComponent,
+        CommentComponent,
+        ListCommentComponent,
     ],
   imports: [
     BrowserModule,
