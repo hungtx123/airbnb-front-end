@@ -49,6 +49,12 @@ export class HostService {
   }
   getListComment(houseId: number): Observable<any> {
     return this.http.get<any>(`${this.url.link}/api/guest/comment/${houseId}`);
+  }
+  editHome(houseId:number, home: Partial<IHome>): Observable<IHome> {
+    return this.http.put<IHome>(`${this.url.link}/api/host/editHouse/${houseId}`, home);
+  }
 
+  deleteHome(id: number) {
+    return this.http.delete(`${this.url.link}/api/host/deleteHouse/${id}`);
   }
 }

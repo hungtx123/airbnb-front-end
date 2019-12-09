@@ -1,0 +1,8 @@
+<div class="alert alert-danger" role="alert" *ngIf="tokenStorageService.getAuthoritiesLC() != 'ROLE_HOST'">Bạn không có quyền truy cập trang này</div>
+<div class="container" *ngIf="tokenStorageService.getAuthoritiesLC() === 'ROLE_HOST'">
+  <div class="form-group">
+    <p>Bạn có chắc xóa chứ</p>
+    <button class="btn btn-info" (click)="onsubmit()">Xóa</button>
+    <button class="btn-group btn-group-lg"><a routerLink="list-home">Không</a></button>
+  </div>
+</div>

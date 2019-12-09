@@ -33,6 +33,8 @@ import {AgmCoreModule} from '@agm/core';
 import { MapUserComponent } from './map-user/map-user.component';
 import { CommentComponent } from './user/detail-home-user/comment/comment.component';
 import { ListCommentComponent } from './user/detail-home-user/list-comment/list-comment.component';
+import { EditHomeComponent } from './host/edit-home/edit-home.component';
+import { DeleteHomeComponent } from './host/delete-home/delete-home.component';
 
 @NgModule({
     declarations: [
@@ -60,6 +62,8 @@ import { ListCommentComponent } from './user/detail-home-user/list-comment/list-
       MapUserComponent,
         CommentComponent,
         ListCommentComponent,
+        EditHomeComponent,
+        DeleteHomeComponent,
     ],
   imports: [
     BrowserModule,
