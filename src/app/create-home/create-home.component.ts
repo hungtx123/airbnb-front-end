@@ -20,9 +20,6 @@ export class CreateHomeComponent implements OnInit {
   percentage: number;
   formGroup: FormGroup;
   message: string;
-  imgArr: string[];
-  homeHost: HomeHost;
-  iHome: IHome;
   lat: number;
   lng: number;
   constructor(private homeService: HostService,
@@ -77,6 +74,7 @@ export class CreateHomeComponent implements OnInit {
           console.log(this.map.lat);
           console.log('Thanh cong');
           this.uploadService.image = 'undefined';
+          this.uploadService.imageCreate = ' ';
           }, (error: HttpErrorResponse) => {
           if (error.status === 200) {
             this.message = error.error.text;

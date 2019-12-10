@@ -23,6 +23,12 @@ import {SearchHomeGuestComponent} from './search-home-guest/search-home-guest.co
 
 
 const routes: Routes = [
+  {path: 'searchHome2',
+  component: SearchHomeGuestComponent},
+  {
+    path: 'homestay',
+    component: HomestayComponent
+  },
   {
     path: 'trangchu',
     component: TrangchuComponent
@@ -92,6 +98,14 @@ const routes: Routes = [
       {
         path: ':id/income',
         component: IncomeMonthComponent,
+      },
+      {
+        path: ':id/edit',
+        component: EditHomeComponent,
+      },
+      {
+        path: ':id/delete',
+        component: DeleteHomeComponent,
       }
     ]
   }
