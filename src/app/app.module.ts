@@ -31,7 +31,6 @@ import { SearchHomeGuestComponent } from './search-home-guest/search-home-guest.
 import {MapComponent} from './map/map.component';
 import {AgmCoreModule} from '@agm/core';
 import { MapUserComponent } from './map-user/map-user.component';
-import { CommentComponent } from './user/detail-home-user/comment/comment.component';
 import { ListCommentComponent } from './user/detail-home-user/list-comment/list-comment.component';
 import { EditHomeComponent } from './host/edit-home/edit-home.component';
 import { DeleteHomeComponent } from './host/delete-home/delete-home.component';
@@ -58,9 +57,8 @@ import { DeleteHomeComponent } from './host/delete-home/delete-home.component';
         HomestayComponent,
         IncomeMonthComponent,
         SearchHomeGuestComponent,
-      MapComponent,
-      MapUserComponent,
-        CommentComponent,
+        MapComponent,
+        MapUserComponent,
         ListCommentComponent,
         EditHomeComponent,
         DeleteHomeComponent,

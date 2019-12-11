@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {HomeHost} from '../../../interface/home-host';
 import {UserService} from '../../../service/user.service';
 import {IComment} from '../../../interface/i-comment';
 import {ActivatedRoute} from '@angular/router';
 import {HostService} from '../../../service/host.service';
 import {IListComment} from '../../../interface/i-listComment';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-list-comment',
@@ -31,10 +31,7 @@ export class ListCommentComponent implements OnInit {
       rate: ''
     });
     const id = +this.route.snapshot.paramMap.get('id');
-    this.hostService.getListComment(id).subscribe(next => {
-    this.comments = next;
-    console.log('lay cmt thanh cong');
-  }, error1 => this.message = 'khong thanh cong');
+    this.getListComment(id);
   }
 
   comment() {
@@ -43,13 +40,29 @@ export class ListCommentComponent implements OnInit {
       this.commentForm.patchValue( {house: {id}});
       const{value} = this.commentForm;
       this.userService.comment(value).subscribe(
-        next => { console.log('comment thanh cong');
-                  this.hostService.getListComment(id).subscribe(next2 => {
-                    console.log('hien list cmt moi');
-                    this.comments = next2; } );
-        }, error => {console.log('comment k thanh cong' ); } );
+        next => {
+          this.getListComment(id);
+          this.commentForm.patchValue({ comment: ''});
+          this.commentForm.patchValue({ rate: ''});
+        }, (error: HttpErrorResponse) => {
+          if (error.status === 201) {
+            this.message = error.error.text;
+          } else {
+            this.message = 'comment không thành công.';
+          }} );
     }
   }
-
-
+  getListComment(id) {
+    this.hostService.getListComment(id).subscribe(next => {
+      this.comments = next;
+      console.log('lay cmt thanh cong');
+    }, (error1: HttpErrorResponse) => {
+      if (error1.status === 200) {
+        console.log('lay cm thanh cong');
+      } else if (error1.status === 404) {
+        this.message = error1.error;
+        console.log('khong lay duoc mesagge');
+      }
+    });
+  }
 }
