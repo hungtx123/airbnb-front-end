@@ -37,6 +37,7 @@ export class BookListOneHomeComponent implements OnInit {
         this.hostService.getAllBookListOneHouseById(this.houseId).subscribe(
           next2 => {
             this.booklist = next2;
+            console.log('da vao day');
           }, (error3: HttpErrorResponse) => {
             if (error3.status === 404) {
               this.message = error3.error;
@@ -46,7 +47,13 @@ export class BookListOneHomeComponent implements OnInit {
             }
         );
         console.log('set trang thai thanh cong');
-      }, error4 => {console.log('set trang thai k thanh cong'); }
+      }, (error4: HttpErrorResponse) => {
+        if (error4.status === 404) {
+          this.message = error4.error;
+        } else if (error4.status === 200) {
+          this.message = error4.error.text;
+        }
+      }
     );
   }
 
