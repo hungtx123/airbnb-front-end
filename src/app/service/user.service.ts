@@ -33,7 +33,7 @@ export class UserService {
     return this.http.post<JwtResponse>(`${this.url.link}/api/order/delete/${houseId}`, houseId);
   }
 
-  comment(comment: IComment): Observable<any>{
+  comment(comment: IComment): Observable<any> {
     return this.http.post<any>(`${this.url.link}/comment`, comment );
   }
 }
