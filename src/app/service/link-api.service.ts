@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LinkAPIService {
-  public link = 'http://localhost:8080';
+  public link = 'https://bnb-http-be.herokuapp.com';
   constructor() { }
 }
